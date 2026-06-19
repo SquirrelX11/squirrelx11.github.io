@@ -811,6 +811,130 @@ main {
   font-weight: 500;
 }
 
+/* ----- Legal / support documents ---------------------------------------- */
+.legal {
+  max-width: 980px;
+}
+.legal-dates {
+  color: var(--text-faint);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+}
+.legal-draft-note {
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  margin-bottom: 30px;
+}
+.legal-draft-note p {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.92rem;
+}
+.legal-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: clamp(24px, 4vw, 52px);
+  align-items: start;
+}
+.legal-toc {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+.legal-toc-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.legal-toc ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.legal-toc a {
+  display: block;
+  padding: 5px 0;
+  color: var(--text-dim);
+  font-size: 0.86rem;
+  line-height: 1.35;
+  transition: color 0.15s ease;
+}
+.legal-toc a:hover {
+  color: var(--text);
+}
+
+/* Markdown body */
+.markdown {
+  color: var(--text-dim);
+  font-size: 1.0rem;
+  line-height: 1.7;
+}
+.markdown h2 {
+  color: var(--text);
+  font-size: 1.32rem;
+  margin: 30px 0 10px;
+  scroll-margin-top: 96px;
+}
+.markdown h3 {
+  color: var(--text);
+  font-size: 1.08rem;
+  margin: 20px 0 8px;
+  scroll-margin-top: 96px;
+}
+.markdown p {
+  margin: 0 0 14px;
+  color: var(--text-dim);
+  font-size: 1.0rem;
+}
+.markdown strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.markdown a {
+  color: rgba(214, 190, 255, 0.95);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.markdown ul {
+  margin: 0 0 16px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.markdown li {
+  color: var(--text-dim);
+}
+.markdown blockquote {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-left: 2px solid var(--glass-border-violet);
+  background: rgba(124, 80, 220, 0.08);
+  border-radius: 0 12px 12px 0;
+  color: var(--text-dim);
+  font-size: 0.94rem;
+}
+.markdown hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 26px 0;
+}
+
+@media (max-width: 860px) {
+  .legal-grid {
+    grid-template-columns: 1fr;
+  }
+  .legal-toc {
+    position: static;
+    margin-bottom: 8px;
+  }
+}
+
 /* ----- Reveal-on-load animation ----------------------------------------- */
 .reveal {
   opacity: 0;

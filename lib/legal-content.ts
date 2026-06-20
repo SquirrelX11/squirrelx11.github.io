@@ -67,7 +67,7 @@ If you use voice search, the app uses the microphone and Apple's Speech Recognit
 We do not sell or share your personal data. Your data stays on your device and, if you enable sync, in your own iCloud. Apple may process data when you use iCloud, the App Store, or Speech, under Apple's terms.
 
 ## 14. Retention and deletion
-Your data remains as long as it is on your device or, if sync is enabled, in your iCloud. You can delete a single person, delete all local data, or delete local and iCloud data from within the app. Deleting local data does not remove iCloud data. To remove your iCloud copy, keep iCloud Sync enabled while deleting, or remove the app's data via iOS Settings. Uninstalling the app removes on-device data but does not delete data stored in your iCloud.
+Your data remains as long as it is on your device or, if sync is enabled, in your iCloud. You can delete a single person, delete all local data, or delete local and iCloud data from within the app. Deleting local data removes only the on-device copy. **Delete local and iCloud data** permanently removes your data from the device and from your private iCloud database — this works whether or not iCloud Sync is turned on, but it requires that you are signed in to iCloud and connected to the internet, and the app confirms completion only after the iCloud deletion succeeds (if it can't reach iCloud, your local data is kept so you can try again). Uninstalling the app removes on-device data but does not delete data stored in your iCloud.
 
 ## 15. Export / backup
 You can export your data to a JSON file and share it through iOS. Once you share or save it, that file is under your control; manage or delete it like any other file.
@@ -160,7 +160,7 @@ Tap "Restore Purchases" on the paywall or in Settings, using the Apple ID that m
 Add B-DAY widgets from the Home Screen widget gallery. Install B-DAY on your Apple Watch from the Watch app; reminders and settings are managed on iPhone.
 
 ## Deleting your data
-Settings → Backup → "Delete local data" removes data from this device. "Delete local and iCloud data" also removes it from your iCloud when iCloud Sync is enabled. Uninstalling removes on-device data but not iCloud data.
+Settings → Backup → "Delete local data" removes the on-device copy only. "Delete local and iCloud data" permanently removes your data from this device and your private iCloud database — it works whether or not iCloud Sync is on, but you must be signed in to iCloud and online, and the app confirms completion only after the iCloud deletion succeeds (if it can't reach iCloud, your local data is not removed so you can try again). Uninstalling removes on-device data but not iCloud data.
 
 ## Privacy
 See our [Privacy Policy]([PRIVACY POLICY URL]). For privacy questions, email **[SUPPORT EMAIL]**.`;

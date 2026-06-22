@@ -4,3 +4,6 @@
 next-env.d.ts
 *.tsbuildinfo
 .DS_Store
+
+# Local backups (not for VCS)
+_backups/

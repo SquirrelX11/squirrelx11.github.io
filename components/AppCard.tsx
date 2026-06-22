@@ -10,10 +10,7 @@ const platformIcon: Record<string, IconName> = {
   Mac: "devices"
 };
 
-/**
- * Featured app card (B-DAY). The whole card is a link to the app page.
- * The icon falls back to a calm glass tile when the asset is missing.
- */
+/** Featured app card (B-DAY). The whole card is a link to the app page. */
 export function AppCard({ app }: { app: AppDefinition }) {
   return (
     <Link
@@ -25,11 +22,8 @@ export function AppCard({ app }: { app: AppDefinition }) {
 
       <div className="app-card-head">
         <span className="app-icon" aria-hidden="true">
-          {/*
-            TODO: Real B-DAY icon at /public/apps/b-day/icon.png. Until it
-            exists we show a glass tile rather than an invented icon.
-          */}
-          <Icon name="sparkles" size={26} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={app.icon} alt="" className="app-icon-img" />
         </span>
         <h3>{app.name}</h3>
       </div>

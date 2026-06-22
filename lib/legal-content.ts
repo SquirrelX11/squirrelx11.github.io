@@ -20,12 +20,12 @@ export function fillTokens(md: string): string {
 }
 
 export const legalMeta = {
-  // Owner input: set the real publication date before release.
-  effectiveDate: "[EFFECTIVE DATE]",
-  lastUpdated: "[EFFECTIVE DATE]"
+  // Publication date provided by the owner.
+  effectiveDate: "June 22, 2026",
+  lastUpdated: "June 22, 2026"
 } as const;
 
-export const privacyBody = `B-DAY is a **local-first** birthday organizer for iPhone and Apple Watch. Your information is stored **on your device**, and — only if you choose — in **your own private iCloud**. We do not operate any server, we do not use analytics, advertising, or tracking, and we include no third-party SDKs. We never receive your birthdays, contacts, photos, or notes. This Privacy Policy is provided by [DEVELOPER LEGAL NAME].
+export const privacyBody = `B-DAY is a **local-first** birthday organizer for iPhone and Apple Watch. Your information is stored **on your device**, and — only if you choose — in **your own private iCloud**. We do not operate any server, we do not use analytics, advertising, or tracking, and we include no third-party SDKs. We never receive your birthdays, contacts, photos, or notes. This Privacy Policy is provided by Aleksandr Pavlov.
 
 ## 1. Who this applies to
 This policy covers the B-DAY iPhone app, its widgets, and the Apple Watch app. Information about other people that you add (names, birthdays, etc.) is entered by you; you are responsible for having a reasonable basis to store it.
@@ -49,7 +49,7 @@ Reminders are local notifications scheduled on your device. There is no push ser
 Home Screen and Lock Screen widgets read birthday information (names, dates, a small photo thumbnail, favorite status) from a shared on-device container so they can display upcoming birthdays. Widgets make no network connections.
 
 ## 8. Apple Watch
-The Apple Watch app shows your upcoming birthdays. Data moves only between your iPhone and your paired Apple Watch using Apple's WatchConnectivity, and a copy is cached on the watch so it can work on its own. Nothing is sent to any server from the watch.
+The Apple Watch app and widgets receive only the birthday information needed to display their features — names, dates, a small photo, and reminder summaries. Phone numbers and email addresses are not sent to or stored on the watch. Data moves only between your iPhone and your paired Apple Watch using Apple's WatchConnectivity, and a minimal copy is cached on the watch so it can work on its own. Nothing is sent to any server from the watch.
 
 ## 9. Purchases
 B-DAY offers a one-time Full Version purchase (not a subscription). Purchases are processed by Apple through the App Store; we do not receive your payment details. The app stores only a local flag indicating whether the Full Version is unlocked. Restoring purchases is handled through Apple.
@@ -87,7 +87,7 @@ We may update this policy when the app or legal requirements change. The "Last u
 ## 20. Contact
 Questions about privacy: **[SUPPORT EMAIL]**.`;
 
-export const termsBody = `These Terms of Use apply to the B-DAY app and this website, provided by [DEVELOPER LEGAL NAME]. The app is licensed, not sold, and is also subject to Apple's Standard End User License Agreement (EULA). These Terms supplement, and do not replace, the Apple Standard EULA.
+export const termsBody = `These Terms of Use apply to the B-DAY app and this website, provided by Aleksandr Pavlov. The app is licensed, not sold, and is also subject to Apple's Standard End User License Agreement (EULA). These Terms supplement, and do not replace, the Apple Standard EULA.
 
 ## 1. Acceptance
 By downloading or using B-DAY, you agree to these Terms and to the Apple Standard EULA. If you do not agree, do not use the app.
@@ -120,7 +120,7 @@ Optional features rely on Apple services (iCloud/CloudKit, notifications, widget
 You are responsible for your own backups and exported files. We are not responsible for data loss; keeping iCloud and/or device backups is recommended.
 
 ## 11. Intellectual property
-The app, its design, and content are owned by [DEVELOPER LEGAL NAME] or its licensors and are protected by applicable laws. Except as permitted by the Apple Standard EULA or applicable law, you may not resell, redistribute, or reverse-engineer the app.
+The app, its design, and content are owned by Aleksandr Pavlov or its licensors and are protected by applicable laws. Except as permitted by the Apple Standard EULA or applicable law, you may not resell, redistribute, or reverse-engineer the app.
 
 ## 12. Disclaimer and limitation of liability
 The app is provided "as is" and "as available," without warranties of any kind to the maximum extent permitted by law. To the maximum extent permitted by applicable law, we are not liable for indirect, incidental, or consequential damages. Nothing in these Terms limits liability that cannot be limited by law.
@@ -164,3 +164,23 @@ Settings → Backup → "Delete local data" removes the on-device copy only. "De
 
 ## Privacy
 See our [Privacy Policy]([PRIVACY POLICY URL]). For privacy questions, email **[SUPPORT EMAIL]**.`;
+
+export const privacyChoicesBody = `You control your data in B-DAY. Here is exactly how.
+
+## Contacts
+Contacts import is optional and read-only. To disable it: iOS Settings → B-DAY → Contacts → off. You can still add people manually.
+
+## Notifications
+In the app: Settings → Reminders → turn off Birthday reminders (and Daily summary). System-wide: iOS Settings → Notifications → B-DAY.
+
+## iCloud Sync
+iCloud Sync is off by default. Turn it on or off in Settings → Backup/iCloud → iCloud Sync. With sync off, your data stays only on your device.
+
+## Delete your data
+Delete a single person from their detail screen, or use Settings → Backup → "Delete local data" (this device only) or "Delete local and iCloud data" (also removes it from your private iCloud, when signed in to iCloud and online). Uninstalling removes on-device data but not iCloud data.
+
+## Exported backups
+If you exported a JSON backup, that file is wherever you saved it. Delete it like any other file to remove that copy.
+
+## Contact
+Privacy questions or requests: **[SUPPORT EMAIL]**.`;

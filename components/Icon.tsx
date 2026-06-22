@@ -11,7 +11,12 @@ export type IconName =
   | "shield"
   | "support"
   | "menu"
-  | "close";
+  | "close"
+  | "bell"
+  | "lock"
+  | "cloud"
+  | "document"
+  | "mail";
 
 const paths: Record<IconName, ReactNode> = {
   arrow: <path d="M5 12h13m-5-6 6 6-6 6" />,
@@ -62,7 +67,33 @@ const paths: Record<IconName, ReactNode> = {
     </>
   ),
   menu: <path d="M4 7h16M4 12h16M4 17h16" />,
-  close: <path d="m6 6 12 12M18 6 6 18" />
+  close: <path d="m6 6 12 12M18 6 6 18" />,
+  bell: (
+    <>
+      <path d="M18 8a6 6 0 0 0-12 0c0 6-3 7-3 7h18s-3-1-3-7" />
+      <path d="M10.3 20a2 2 0 0 0 3.4 0" />
+    </>
+  ),
+  lock: (
+    <>
+      <rect x="5" y="11" width="14" height="9" rx="2" />
+      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+    </>
+  ),
+  cloud: <path d="M7 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17 9.5a3.5 3.5 0 0 1 .5 7Z" />,
+  document: (
+    <>
+      <path d="M7 3h7l5 5v13H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+      <path d="M14 3v5h5" />
+      <path d="M9 13h6M9 17h4" />
+    </>
+  ),
+  mail: (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m4 7 8 6 8-6" />
+    </>
+  )
 };
 
 export function Icon({

@@ -6,7 +6,7 @@ import { Markdown } from "@/components/Markdown";
 import { Icon } from "@/components/Icon";
 
 export const metadata: Metadata = {
-  title: "Support — B-DAY Studio",
+  title: "Support — Squirrel Apps",
   description: "Help with B-DAY: notifications, Contacts, iCloud sync, backup, purchases, widgets, Apple Watch, and deleting your data.",
   alternates: { canonical: "/support" }
 };

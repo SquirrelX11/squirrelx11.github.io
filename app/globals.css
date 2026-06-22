@@ -1,5 +1,5 @@
 /* =============================================================================
-   B-DAY Studio — design system
+   Squirrel Apps — design system
    Single source of truth for tokens, the liquid-glass surface, ambient
    background, layout and responsive rules. No CSS framework, no UI library.
    ========================================================================== */
@@ -73,7 +73,9 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   min-height: 100vh;
-  overflow-x: hidden;
+  /* NOTE: horizontal overflow is clipped on `main` (below), NOT here — a
+     non-visible overflow on <body> makes Chrome drop the sticky header's
+     backdrop-filter (the frosted blur silently stops working). */
 }
 
 a {
@@ -197,11 +199,11 @@ img {
   animation: drift-c 40s ease-in-out infinite alternate;
 }
 
-/* Darker toward the bottom of the page. */
+/* Very gentle vignette toward the bottom — soft, not a visible dark band. */
 .ambient .floor {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(2, 3, 8, 0.7) 100%);
+  background: linear-gradient(180deg, transparent 72%, rgba(4, 5, 13, 0.32) 100%);
 }
 
 /* Very subtle CSS grain (no raster texture file). */
@@ -230,8 +232,9 @@ img {
 .glass {
   position: relative;
   background: var(--glass-fill);
-  backdrop-filter: blur(22px) saturate(140%);
-  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  /* Lighter blur than before — 22px on several surfaces was a real perf cost. */
+  backdrop-filter: blur(13px) saturate(130%);
+  -webkit-backdrop-filter: blur(13px) saturate(130%);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
   box-shadow: var(--glass-shadow);
@@ -270,6 +273,9 @@ img {
 
 main {
   display: block;
+  /* Contain the rotated hero devices without clipping <body> (see body note).
+     Header sits outside <main>, so its backdrop-filter keeps working in Chrome. */
+  overflow-x: clip;
 }
 
 .section {
@@ -966,30 +972,82 @@ main {
   .menu-btn {
     display: inline-flex;
   }
-  /* Mobile dropdown panel */
+  /* Mobile dropdown panel: more liquid glass, less see-through clutter. */
   .nav.open {
     position: absolute;
-    top: calc(100% + 10px);
-    left: var(--gutter);
-    right: var(--gutter);
+    top: calc(100% + 12px);
+    left: 0;
+    right: 0;
+    z-index: 40;
     flex-direction: column;
     align-items: stretch;
-    gap: 6px;
-    padding: 14px;
-    border-radius: var(--radius);
+    gap: 8px;
+    padding: 12px;
+    border-radius: 30px;
+    overflow: hidden;
+    background:
+      radial-gradient(80% 120% at 12% 0%, rgba(181, 139, 255, 0.24), transparent 52%),
+      radial-gradient(75% 120% at 96% 86%, rgba(255, 126, 205, 0.17), transparent 58%),
+      linear-gradient(180deg, rgba(22, 19, 42, 0.985), rgba(10, 9, 22, 0.965));
+    border: 1px solid rgba(226, 218, 255, 0.20);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.07),
+      0 22px 56px rgba(0, 0, 0, 0.44),
+      0 0 42px rgba(150, 94, 255, 0.15);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+  }
+  .nav.open::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: 29px;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(10, 9, 21, 0.34), rgba(10, 9, 21, 0.16)),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 34%, rgba(255, 139, 215, 0.08) 72%, transparent),
+      radial-gradient(70% 46% at 34% 0%, rgba(255, 255, 255, 0.12), transparent 64%);
+  }
+  .nav.open::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 68px;
+    right: -42px;
+    top: -22px;
+    border-radius: 999px;
+    pointer-events: none;
+    background: rgba(218, 178, 255, 0.18);
+    filter: blur(22px);
   }
   .nav.open .nav-links {
+    position: relative;
+    z-index: 1;
     flex-direction: column;
     align-items: stretch;
-    gap: 2px;
+    gap: 8px;
   }
   .nav.open .nav-links a {
+    justify-content: center;
     min-height: 48px;
     padding-inline: 14px;
+    color: rgba(244, 239, 255, 0.92);
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  .nav.open .nav-links a.active {
+    color: #fff;
+    background: linear-gradient(135deg, rgba(183, 139, 255, 0.26), rgba(255, 143, 214, 0.14));
+    border-color: rgba(231, 207, 255, 0.20);
   }
   .nav.open .nav-cta {
-    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+    margin-top: 4px;
     width: 100%;
+    justify-content: center;
   }
 
   .hero {
@@ -1044,4 +1102,1179 @@ main {
     opacity: 1;
     transform: none;
   }
+  .hero-stage-img,
+  .hero-stage-glow,
+  .hero-stage-orbit,
+  .ambient .blob {
+    animation: none !important;
+    transform: none !important;
+  }
 }
+
+/* =============================================================================
+   Squirrel Apps — premium v2 (glass system, spacing, hero artwork, B-DAY page)
+   These rules intentionally come last so they refine the base styles above.
+   ========================================================================== */
+
+/* ----- Premium multi-layer glass ---------------------------------------- */
+.glass {
+  position: relative;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.025) 42%,
+      rgba(111, 63, 216, 0.055)
+    );
+  backdrop-filter: blur(22px) saturate(135%);
+  -webkit-backdrop-filter: blur(22px) saturate(135%);
+  border: 1px solid rgba(196, 167, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(132, 86, 210, 0.08),
+    0 18px 55px rgba(0, 0, 0, 0.32),
+    0 0 40px rgba(116, 66, 204, 0.06);
+}
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.1),
+    transparent 30%,
+    transparent 72%,
+    rgba(236, 98, 181, 0.035)
+  );
+  -webkit-mask: none;
+  mask: none;
+}
+.glass-soft {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015) 50%, rgba(111, 63, 216, 0.04));
+  border-color: rgba(196, 167, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 14px 40px rgba(0, 0, 0, 0.28);
+}
+.glass-violet {
+  border-color: rgba(196, 167, 255, 0.26);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 18px 55px rgba(0, 0, 0, 0.34),
+    0 0 56px rgba(124, 78, 220, 0.12);
+}
+
+/* ----- Header: shrink on scroll + active nav ---------------------------- */
+.site-header .header-inner {
+  transition: padding 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.site-header.scrolled .header-inner {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.site-header.scrolled .brand-mark {
+  width: 26px;
+  height: 26px;
+}
+.nav-links a.active {
+  color: var(--text);
+  background: rgba(184, 150, 255, 0.14);
+}
+
+/* ----- Tighter vertical rhythm (−~30%) ---------------------------------- */
+.section {
+  padding-block: clamp(52px, 6.5vw, 96px);
+}
+.section-head {
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+.hero {
+  padding-block: clamp(40px, 6vw, 84px);
+}
+
+/* ----- Hero: 41% / 59% + real artwork ----------------------------------- */
+.hero {
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  align-items: center;
+  gap: clamp(24px, 3vw, 48px);
+}
+.hero-copy {
+  max-width: none;
+}
+.hero h1 {
+  font-size: clamp(2.3rem, 4vw, 3.3rem);
+  line-height: 1.03;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.hero-sub {
+  max-width: 34ch;
+}
+/* ----- Liquid-glass header --------------------------------------------- */
+.glass-nav {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.11),
+      rgba(255, 255, 255, 0.035) 44%,
+      rgba(111, 63, 216, 0.08)
+    );
+  backdrop-filter: blur(30px) saturate(175%) brightness(1.04);
+  -webkit-backdrop-filter: blur(30px) saturate(175%) brightness(1.04);
+  border: 1px solid rgba(210, 190, 255, 0.24);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 -14px 28px rgba(124, 78, 220, 0.1),
+    0 22px 52px rgba(0, 0, 0, 0.42),
+    0 0 46px rgba(124, 78, 220, 0.12);
+}
+/* Glossy specular sheen across the top — the "liquid" highlight. */
+.glass-nav::before {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.02) 46%, transparent 60%),
+    linear-gradient(118deg, rgba(255, 255, 255, 0.14), transparent 26%, transparent 68%, rgba(236, 98, 181, 0.07));
+}
+/* A soft moving liquid glare that drifts slowly along the bar. */
+.glass-nav::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    60% 140% at var(--sheen-x, 28%) -10%,
+    rgba(255, 255, 255, 0.16),
+    transparent 60%
+  );
+  animation: nav-sheen 14s ease-in-out infinite alternate;
+}
+@keyframes nav-sheen {
+  from { --sheen-x: 22%; }
+  to { --sheen-x: 78%; }
+}
+@property --sheen-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 28%;
+}
+
+/* ----- Floating colored orbs (ambient liveliness) ----------------------- */
+.orb-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.orb-violet { background: radial-gradient(circle at 50% 45%, rgba(150, 104, 245, 1), rgba(124, 78, 220, 0.55) 48%, transparent 80%); }
+.orb-pink { background: radial-gradient(circle at 50% 45%, rgba(232, 110, 190, 1), rgba(200, 77, 158, 0.5) 48%, transparent 80%); }
+.orb-blue { background: radial-gradient(circle at 50% 45%, rgba(98, 140, 240, 1), rgba(52, 95, 197, 0.5) 48%, transparent 80%); }
+.orb-soft { background: radial-gradient(circle at 50% 45%, rgba(214, 192, 255, 1), rgba(196, 167, 255, 0.5) 48%, transparent 80%); }
+
+.float-1 { animation-name: orb-float-1; }
+.float-2 { animation-name: orb-float-2; }
+.float-3 { animation-name: orb-float-3; }
+.float-4 { animation-name: orb-float-4; }
+@keyframes orb-float-1 { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(4vw, -3vh, 0) scale(1.08); } }
+@keyframes orb-float-2 { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-5vw, 4vh, 0) scale(0.92); } }
+@keyframes orb-float-3 { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(3vw, 5vh, 0) scale(1.12); } }
+@keyframes orb-float-4 { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-3vw, -4vh, 0) scale(1.05); } }
+
+/* ----- Brand logo (real Squirrel Apps mark) ----------------------------- */
+.brand-mark {
+  overflow: hidden;
+  background: #0a0a16;
+}
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.16);
+}
+/* Hero: logo above the headline */
+.hero-logo {
+  display: flex;
+  width: clamp(56px, 5vw, 74px);
+  aspect-ratio: 1;
+  margin-bottom: 20px;
+  border-radius: 24%;
+  overflow: hidden;
+  background: #0a0a16;
+  box-shadow:
+    inset 0 0 0 1px rgba(196, 167, 255, 0.2),
+    0 16px 40px -12px rgba(124, 78, 220, 0.65);
+}
+.hero-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.14);
+}
+
+/* Hero stage (HeroStage.tsx): big floating artwork on a soft glow */
+.hero-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1672 / 941;
+  display: grid;
+  place-items: center;
+}
+.hero-stage-img {
+  /* Slightly oversized so the devices read large; edges fade into the page. */
+  width: 108%;
+  max-width: 108%;
+  height: 108%;
+  object-fit: contain;
+  filter: drop-shadow(0 38px 80px rgba(0, 0, 0, 0.5));
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 7%, #000 93%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-composite: intersect;
+  animation: hero-float 11s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes hero-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -5px, 0); }
+}
+/* Soft violet/pink backdrop that drifts opposite the cursor for depth. */
+.hero-stage-glow {
+  position: absolute;
+  inset: 8% 4%;
+  z-index: -1;
+  border-radius: 48% 52% 56% 44% / 52% 48% 52% 48%;
+  background: radial-gradient(circle at 50% 48%, rgba(124, 78, 220, 0.34), rgba(200, 77, 158, 0.16) 52%, transparent 72%);
+  filter: blur(48px);
+  transform: translate3d(var(--gx, 0px), var(--gy, 0px), 0);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+/* Faint dotted orbit ring behind the artwork. */
+.hero-stage-orbit {
+  position: absolute;
+  inset: -4%;
+  z-index: -1;
+  border-radius: 50%;
+  background:
+    radial-gradient(2px 2px at 18% 26%, rgba(196, 167, 255, 0.55), transparent 60%),
+    radial-gradient(2px 2px at 82% 22%, rgba(236, 98, 181, 0.45), transparent 60%),
+    radial-gradient(1.6px 1.6px at 74% 82%, rgba(124, 78, 220, 0.5), transparent 60%),
+    radial-gradient(1.6px 1.6px at 26% 78%, rgba(255, 255, 255, 0.32), transparent 60%),
+    radial-gradient(1.4px 1.4px at 50% 8%, rgba(196, 167, 255, 0.4), transparent 60%);
+  -webkit-mask: radial-gradient(closest-side, transparent 56%, #000 70%, transparent 100%);
+  mask: radial-gradient(closest-side, transparent 56%, #000 70%, transparent 100%);
+  opacity: 0.6;
+  animation: orbit-spin 90s linear infinite;
+  pointer-events: none;
+}
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ----- App icon image (Explore + CTA + B-DAY page) ---------------------- */
+.app-icon img,
+.app-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.app-icon {
+  background: transparent;
+  box-shadow: 0 8px 22px -8px rgba(124, 78, 220, 0.5);
+}
+
+/* ----- Why Squirrel Apps heading ---------------------------------------- */
+.why-head {
+  max-width: 680px;
+  margin-bottom: clamp(22px, 3vw, 38px);
+}
+
+/* ----- Compact B-DAY CTA (replaces the big band) ------------------------ */
+.bday-cta {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3vw, 32px);
+  padding: clamp(20px, 2.6vw, 30px) clamp(22px, 3vw, 36px);
+  border-radius: var(--radius-lg);
+}
+.bday-cta .app-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  flex: none;
+}
+.bday-cta-copy {
+  flex: 1;
+  min-width: 0;
+}
+.bday-cta-copy h2 {
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+}
+.bday-cta-copy p {
+  color: var(--text-dim);
+  margin-top: 4px;
+  font-size: 0.96rem;
+}
+.bday-cta .btn {
+  flex: none;
+}
+@media (max-width: 640px) {
+  .bday-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .bday-cta .btn {
+    width: 100%;
+  }
+}
+
+/* ----- Footer compaction ------------------------------------------------ */
+.footer-inner {
+  padding-block: clamp(32px, 4vw, 48px);
+  gap: clamp(24px, 3vw, 40px);
+}
+.site-footer {
+  margin-top: clamp(32px, 5vw, 64px);
+  background: linear-gradient(180deg, transparent, rgba(2, 3, 8, 0.82));
+}
+.footer-col a,
+.footer-col .muted {
+  min-height: 32px;
+}
+
+/* ----- B-DAY product page ----------------------------------------------- */
+.bday-page {
+  padding-top: clamp(28px, 5vw, 56px);
+}
+.bday-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  align-items: center;
+  gap: clamp(28px, 4vw, 60px);
+  padding-block: clamp(20px, 4vw, 56px);
+}
+.bday-hero-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.bday-hero-head .app-icon {
+  width: 66px;
+  height: 66px;
+  border-radius: 16px;
+}
+.bday-hero h1 {
+  font-size: clamp(2.4rem, 4.6vw, 3.4rem);
+}
+.bday-hero-tagline {
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  margin-top: 12px;
+}
+.bday-hero-sub {
+  color: var(--text-dim);
+  margin-top: 14px;
+  max-width: 46ch;
+}
+.bday-hero-art {
+  position: relative;
+  aspect-ratio: 16 / 11;
+}
+.bday-hero-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  -webkit-mask-image: radial-gradient(130% 130% at 50% 48%, #000 60%, transparent 100%);
+  mask-image: radial-gradient(130% 130% at 50% 48%, #000 60%, transparent 100%);
+  filter: drop-shadow(0 30px 64px rgba(0, 0, 0, 0.55));
+}
+.availability-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: var(--pill);
+  font-weight: 560;
+  color: var(--text-dim);
+  cursor: default;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* B-DAY features: 4 compact cards */
+.bday-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(14px, 1.8vw, 20px);
+}
+.bday-feature-grid .feature-card h3 {
+  font-size: 1.08rem;
+}
+
+/* Widget split */
+.widget-split {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: clamp(24px, 4vw, 52px);
+  padding: clamp(26px, 3.2vw, 44px);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.widget-split.reverse {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+.widget-art {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+.widget-art img {
+  width: 78%;
+  height: 78%;
+  object-fit: cover;
+  border-radius: 26px;
+  box-shadow: 0 24px 60px -18px rgba(124, 78, 220, 0.55);
+}
+.widget-art::after {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 77, 158, 0.26), rgba(124, 78, 220, 0.14) 55%, transparent 72%);
+  filter: blur(40px);
+}
+
+/* Privacy block */
+.privacy-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+.privacy-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: var(--pill);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+}
+.privacy-pill .ic {
+  color: rgba(216, 190, 255, 0.95);
+}
+
+/* Resources */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(12px, 1.6vw, 18px);
+}
+.resource-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  color: var(--text);
+  font-weight: 500;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.resource-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--glass-border-violet);
+}
+.resource-link .ic {
+  color: rgba(216, 190, 255, 0.95);
+}
+
+/* ----- B-DAY page responsive ------------------------------------------- */
+@media (max-width: 860px) {
+  /* Re-assert single-column on mobile (overrides the v2 desktop hero grid). */
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-stage {
+    aspect-ratio: 16 / 10;
+    max-height: 380px;
+  }
+  .bday-hero,
+  .widget-split,
+  .widget-split.reverse {
+    grid-template-columns: 1fr;
+  }
+  .widget-split .widget-art {
+    order: -1;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+  .bday-feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .resource-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================================================
+   Navbar — matte frosted glass (Apple.com style). Even, blurred, NOT glossy.
+   ========================================================================== */
+.glass-nav {
+  background: linear-gradient(180deg, rgba(18, 20, 38, 0.42), rgba(10, 12, 24, 0.28));
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  border: 1px solid rgba(226, 218, 255, 0.075);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.018),
+    0 8px 24px rgba(0, 0, 0, 0.14);
+}
+/* No specular highlight, no moving sheen — clean frosted translucency only. */
+.glass-nav::before,
+.glass-nav::after {
+  display: none;
+}
+.site-header.scrolled .glass-nav {
+  background: linear-gradient(180deg, rgba(15, 17, 31, 0.58), rgba(9, 10, 21, 0.44));
+  border-color: rgba(226, 218, 255, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.065),
+    0 10px 28px rgba(0, 0, 0, 0.20);
+}
+
+/* =============================================================================
+   Hero — one cohesive product cluster (separate device layers + clean orbit)
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  isolation: isolate;
+  /* No own clip — `main` clips horizontally. A clip box here cut the bottom glow
+     into a hard black edge between the hero and the next section. */
+  overflow: visible;
+  display: flex;
+  align-items: center;
+}
+.hero-section > .container.hero {
+  width: min(1380px, calc(100% - clamp(210px, 20vw, 460px)));
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: 0;
+  grid-template-columns: minmax(420px, 0.76fr) minmax(480px, 0.98fr);
+  align-items: center;
+  gap: clamp(26px, 3vw, 54px);
+  min-height: 640px;
+  padding-block: clamp(28px, 4vw, 50px);
+}
+
+/* Page-level ambient blooms (kept subtle; the cluster owns its shared glow). */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  width: 760px;
+  height: 620px;
+  left: 64%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(103, 57, 202, 0.2);
+  filter: blur(160px);
+  pointer-events: none;
+  animation: hero-glow 16s ease-in-out infinite alternate;
+}
+.hero-section::after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  width: 500px;
+  height: 460px;
+  right: -4%;
+  top: 30%;
+  border-radius: 50%;
+  background: rgba(195, 61, 145, 0.12);
+  filter: blur(150px);
+  pointer-events: none;
+}
+@keyframes hero-glow {
+  from { opacity: 0.75; }
+  to { opacity: 1; }
+}
+
+/* -------- Left column: lighter premium glass card, tight lockup -------- */
+.hero-copy {
+  position: relative;
+  max-width: none;
+  padding: clamp(28px, 2.2vw, 40px) clamp(28px, 2.4vw, 42px);
+  border-radius: 28px;
+}
+.hero-copy > * + * {
+  margin-top: 0;
+}
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.hero-brand .hero-logo {
+  width: clamp(46px, 3.8vw, 54px);
+  margin-bottom: 0;
+}
+.hero-brand-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.hero-section .eyebrow {
+  margin-bottom: 10px;
+  color: var(--text-faint);
+}
+.hero-section h1 {
+  font-size: clamp(2.25rem, 3.9vw, 3.2rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  margin: 0;
+}
+.hero-section .hero-sub {
+  margin-top: 14px;
+  max-width: 34ch;
+  color: rgba(210, 214, 232, 0.82);
+}
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: var(--pill);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(196, 167, 255, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.chip .ic {
+  color: rgba(206, 184, 255, 0.92);
+}
+/* CTAs: always one row on desktop. */
+.hero-section .hero-actions {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+.hero-section .hero-actions .btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding-inline: clamp(16px, 1.4vw, 22px);
+}
+
+/* Lighter glass card surface (less blur, softer border, lighter fill). */
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.045),
+    rgba(255, 255, 255, 0.012) 52%,
+    rgba(106, 66, 196, 0.035)
+  );
+  border: 1px solid rgba(190, 160, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.065),
+    0 22px 65px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(16px) saturate(125%);
+  -webkit-backdrop-filter: blur(16px) saturate(125%);
+  pointer-events: none;
+}
+
+/* -------- Right column: product cluster stage -------- */
+.hero-product-stage {
+  position: relative;
+  width: min(100%, 660px);
+  min-height: 520px;
+  justify-self: end;
+  transform: translateX(6px);
+}
+.hero-product-stage::before {
+  content: "";
+  position: absolute;
+  width: 72%;
+  height: 60%;
+  left: 56%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 52% 48%, rgba(118, 78, 236, 0.30) 0%, rgba(203, 76, 171, 0.14) 44%, transparent 72%),
+    radial-gradient(ellipse at 72% 68%, rgba(65, 145, 255, 0.12) 0%, transparent 62%);
+  filter: blur(74px);
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-product-stage::after {
+  content: "";
+  position: absolute;
+  inset: 5% -2% 0 4%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(22% 22% at 28% 30%, rgba(91, 127, 255, 0.14), transparent 72%),
+    radial-gradient(18% 22% at 76% 64%, rgba(255, 85, 181, 0.12), transparent 72%);
+  filter: blur(30px);
+}
+.hero-orbit {
+  position: absolute;
+  width: 106%;
+  height: 90%;
+  left: 53%;
+  top: 48%;
+  transform: translate(-50%, -50%) rotate(-2deg);
+  object-fit: contain;
+  opacity: 0.20;
+  z-index: 1;
+  pointer-events: none;
+  filter: saturate(120%) hue-rotate(-3deg);
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(ellipse at 58% 50%, rgba(0, 0, 0, 0.95) 26%, rgba(0, 0, 0, 0.66) 58%, transparent 88%);
+  mask-image: radial-gradient(ellipse at 58% 50%, rgba(0, 0, 0, 0.95) 26%, rgba(0, 0, 0, 0.66) 58%, transparent 88%);
+}
+.hero-product-stage img.hero-phone,
+.hero-product-stage img.hero-watch,
+.hero-product-stage img.hero-widget {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+.hero-phone {
+  width: clamp(360px, 28vw, 490px);
+  left: 30%;
+  top: 7%;
+  transform: rotate(-8deg);
+  z-index: 4;
+  filter:
+    drop-shadow(0 36px 62px rgba(0, 0, 0, 0.56))
+    drop-shadow(0 0 32px rgba(111, 74, 235, 0.16));
+}
+.hero-watch {
+  width: clamp(165px, 13vw, 215px);
+  right: 3%;
+  top: 46%;
+  transform: rotate(5deg);
+  z-index: 5;
+  filter:
+    drop-shadow(0 24px 42px rgba(0, 0, 0, 0.48))
+    drop-shadow(0 0 22px rgba(255, 83, 184, 0.12));
+}
+.hero-widget {
+  width: clamp(145px, 11vw, 190px);
+  left: 14%;
+  top: 16%;
+  transform: rotate(-7deg);
+  z-index: 3;
+  filter:
+    drop-shadow(0 24px 42px rgba(0, 0, 0, 0.44))
+    drop-shadow(0 0 24px rgba(137, 92, 255, 0.14));
+}
+
+
+.hero-phone,
+.hero-watch,
+.hero-widget {
+  image-rendering: auto;
+}
+
+/* -------- Tablet / mobile: stack before the 2-col grid would overflow -------- */
+@media (max-width: 1080px) {
+  .hero-section {
+    min-height: 0;
+  }
+  .hero-section > .container.hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    gap: 10px;
+  }
+  .hero-product-stage {
+    width: min(100%, 680px);
+    min-height: 540px;
+    margin-top: 6px;
+    justify-self: center;
+    transform: none;
+  }
+  .hero-orbit {
+    opacity: 0.17;
+    width: 126%;
+    height: 100%;
+    left: 52%;
+  }
+  .hero-phone {
+    width: clamp(300px, 62vw, 470px);
+    left: 24%;
+    top: 12%;
+  }
+  .hero-watch {
+    width: clamp(132px, 29vw, 210px);
+    right: 2%;
+    top: 52%;
+  }
+  .hero-widget {
+    width: clamp(118px, 27vw, 180px);
+    left: 8%;
+    top: 15%;
+  }
+}
+@media (max-width: 768px) {
+  .hero-section > .container.hero {
+    width: min(100% - 32px, 430px);
+    gap: 0;
+    padding-block: 22px 38px;
+  }
+  .hero-copy {
+    padding: 26px 28px 28px;
+    border-radius: 28px;
+  }
+  .hero-section h1 {
+    font-size: clamp(2.2rem, 10.6vw, 2.8rem);
+  }
+  .hero-section .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .hero-section .hero-actions .btn {
+    justify-content: center;
+  }
+  .hero-product-stage {
+    width: 100%;
+    min-height: 390px;
+    margin-top: -2px;
+    overflow: visible;
+  }
+  .hero-orbit {
+    opacity: 0.13;
+    width: 132%;
+    height: 96%;
+    left: 51%;
+    top: 52%;
+  }
+  .hero-phone {
+    width: clamp(282px, 79vw, 332px);
+    left: 8%;
+    top: 14%;
+  }
+  .hero-watch {
+    width: clamp(118px, 31vw, 145px);
+    right: 1%;
+    top: 53%;
+  }
+  .hero-widget {
+    width: clamp(106px, 29vw, 130px);
+    left: 0;
+    top: 18%;
+  }
+}
+@media (max-width: 420px) {
+  .hero-copy {
+    padding-inline: 28px;
+  }
+  .hero-product-stage {
+    min-height: 370px;
+  }
+  .hero-phone {
+    left: 7%;
+    width: clamp(270px, 77vw, 315px);
+  }
+  .hero-watch {
+    right: 0;
+    top: 54%;
+  }
+}
+
+/* Reduced motion: stop the slow glow pulse. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section::before {
+    animation: none !important;
+  }
+}
+
+
+/* =============================================================================
+   Final visual polish — hero fade, liquid nav, mobile menu and footer balance
+   ========================================================================== */
+/* No background gradient on the hero — its dark bottom stop created a hard line
+   at the section's edge. The page ambient already provides the depth. */
+.hero-section {
+  background: none;
+}
+.hero-section > .container.hero {
+  position: relative;
+}
+
+.glass-nav {
+  /* NOTE: no `overflow: hidden` here — it clipped the mobile dropdown (which is
+     absolutely positioned below the pill). The frosted blur still follows the
+     pill's border-radius automatically. */
+  /* Matte: a solid dark bar (no backdrop blur). Cheap to paint, identical in
+     every browser, no lag. */
+  background: linear-gradient(180deg, rgba(24, 23, 46, 0.97), rgba(13, 13, 28, 0.95));
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-color: rgba(226, 218, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.045),
+    inset 0 -18px 30px rgba(126, 82, 224, 0.10),
+    0 18px 46px rgba(0, 0, 0, 0.28),
+    0 0 44px rgba(132, 88, 236, 0.10);
+}
+.glass-nav::before,
+.glass-nav::after {
+  display: block;
+}
+.glass-nav::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 42%),
+    linear-gradient(112deg, rgba(255, 255, 255, 0.10), transparent 26%, transparent 72%, rgba(255, 151, 220, 0.06));
+}
+.glass-nav::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 0;
+  height: 60%;
+  border-radius: 999px;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.12), transparent 66%);
+  filter: blur(8px);
+}
+.site-header.scrolled .glass-nav {
+  background:
+    radial-gradient(80% 150% at 18% -36%, rgba(255, 255, 255, 0.20), transparent 46%),
+    linear-gradient(180deg, rgba(28, 25, 51, 0.66), rgba(9, 10, 21, 0.48));
+  border-color: rgba(226, 218, 255, 0.16);
+}
+
+@media (max-width: 860px) {
+  .nav.open {
+    /* Near-opaque so the busy hero behind never shows through the menu. */
+    background:
+      radial-gradient(90% 120% at 8% 0%, rgba(150, 110, 220, 0.30), transparent 54%),
+      radial-gradient(80% 120% at 96% 82%, rgba(220, 110, 190, 0.20), transparent 60%),
+      linear-gradient(180deg, rgba(26, 22, 46, 0.985), rgba(11, 10, 24, 0.975));
+    border-color: rgba(232, 219, 255, 0.25);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.24),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+      0 24px 58px rgba(0, 0, 0, 0.36),
+      0 0 50px rgba(168, 103, 255, 0.18);
+    backdrop-filter: blur(34px) saturate(190%) brightness(1.08);
+    -webkit-backdrop-filter: blur(34px) saturate(190%) brightness(1.08);
+  }
+  .nav.open::before {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 34%, rgba(255, 139, 215, 0.12) 74%, transparent),
+      radial-gradient(70% 44% at 32% 0%, rgba(255, 255, 255, 0.14), transparent 66%);
+  }
+  .nav.open .nav-links a {
+    background: rgba(255, 255, 255, 0.075);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+  .nav.open .nav-links a.active {
+    background: linear-gradient(135deg, rgba(193, 151, 255, 0.24), rgba(255, 143, 214, 0.16));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-orbit {
+    opacity: 0.28;
+    width: 152%;
+    height: 112%;
+    left: 50%;
+    top: 50%;
+    filter: saturate(135%) hue-rotate(-4deg) drop-shadow(0 0 18px rgba(180, 126, 255, 0.14));
+    -webkit-mask-image: radial-gradient(ellipse at 52% 50%, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.72) 62%, transparent 94%);
+    mask-image: radial-gradient(ellipse at 52% 50%, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.72) 62%, transparent 94%);
+  }
+  .site-footer {
+    margin-top: 24px;
+  }
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 26px;
+    padding-block: 30px 28px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+  .footer-brand .brand {
+    margin-bottom: 8px;
+  }
+  .footer-tagline {
+    max-width: 28ch;
+    font-size: 0.88rem;
+  }
+  .footer-col h4 {
+    margin-bottom: 8px;
+  }
+  .footer-col ul {
+    gap: 0;
+  }
+  .footer-col a,
+  .footer-col .muted {
+    min-height: 30px;
+    font-size: 0.9rem;
+  }
+  .footer-bottom {
+    padding-block: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer-inner {
+    gap: 20px 22px;
+    padding-block: 28px 24px;
+  }
+}
+
+/* =============================================================================
+   Mobile performance — animated 90px blob blurs + many backdrop-filters tank
+   scrolling and make taps (e.g. the menu button) feel unresponsive on phones.
+   Kill the animations and the expensive blurs; opaque fills keep the look.
+   ========================================================================== */
+@media (max-width: 860px) {
+  .ambient .blob {
+    animation: none !important;
+    will-change: auto;
+    filter: blur(64px);
+    opacity: 0.26;
+  }
+  .ambient .grain { display: none; }
+
+  /* Bar + mobile menu: solid frosted fill, no GPU backdrop blur. */
+  .glass-nav,
+  .nav.open {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .glass-nav {
+    background: linear-gradient(180deg, rgba(24, 23, 45, 0.94), rgba(12, 12, 26, 0.9));
+  }
+
+  /* Cards: much lighter blur (or none) — keeps scrolling smooth. */
+  .glass {
+    backdrop-filter: blur(8px) saturate(118%);
+    -webkit-backdrop-filter: blur(8px) saturate(118%);
+  }
+}
+
+
+/* =============================================================================
+   Global performance — the main scroll jank came from continuously ANIMATING
+   very large blurs (90px ambient blobs + 160px hero glow). Freeze them: the
+   glow stays, it just no longer repaints every frame. Drop the blend-mode grain.
+   ========================================================================== */
+.ambient .blob {
+  animation: none !important;
+  will-change: auto;
+}
+.hero-section::before {
+  animation: none !important;
+}
+.ambient .grain {
+  display: none;
+}
+
+/* =============================================================================
+   Keep the top bar IDENTICAL while scrolling — no shrink, no opacity jump.
+   (Overrides the earlier `.scrolled` size/background changes.)
+   ========================================================================== */
+.site-header.scrolled .header-inner {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.site-header.scrolled .brand-mark {
+  width: 30px;
+  height: 30px;
+}
+.site-header.scrolled .glass-nav {
+  background: linear-gradient(180deg, rgba(24, 23, 46, 0.97), rgba(13, 13, 28, 0.95));
+  border-color: rgba(226, 218, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+/* =============================================================================
+   Hard line at the hero's bottom edge — caused by `.hero-section`'s isolated
+   stacking context clipping the big bottom glow to its box. Drop the isolation
+   and re-layer the glows (above the page ambient, below the hero content) so the
+   glow now fades past the section boundary instead of cutting into a black line.
+   ========================================================================== */
+.hero-section {
+  isolation: auto;
+}
+.hero-section::before,
+.hero-section::after {
+  z-index: 0;
+}
+.hero-section > .container.hero {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Frozen hero glows: cap opacity so the bottom glow doesn't read as a bright band/edge. */
+.hero-section::before { opacity: 0.7; }
+.hero-section::after { opacity: 0.85; }

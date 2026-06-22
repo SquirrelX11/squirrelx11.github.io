@@ -7,7 +7,6 @@ export type Feature = {
   text: string;
 };
 
-/** Advantages section — three compact feature cards. */
 const features: Feature[] = [
   {
     icon: "sparkles",
@@ -21,16 +20,15 @@ const features: Feature[] = [
   },
   {
     icon: "shield",
+    // NOTE: general marketing wording only — kept aligned with the audited app.
     title: "Privacy by design",
-    // NOTE: General marketing wording only. Do NOT claim "we collect no data"
-    // until the iOS project has been fully audited (see LEGAL_AUDIT_CHECKLIST.md).
     text: "Your information stays under your control."
   }
 ];
 
 export function FeatureCard({ feature }: { feature: Feature }) {
   return (
-    <GlassSurface as="article" className="feature-card">
+    <GlassSurface as="article" className="feature-card glass-feature">
       <span className="feature-ic" aria-hidden="true">
         <Icon name={feature.icon} size={22} />
       </span>
@@ -42,10 +40,11 @@ export function FeatureCard({ feature }: { feature: Feature }) {
 
 export function AdvantagesSection() {
   return (
-    <section className="container section" aria-labelledby="advantages-title">
-      <h2 id="advantages-title" className="sr-only">
-        Why these apps
-      </h2>
+    <section className="container section" aria-labelledby="why-title">
+      <div className="why-head">
+        <p className="eyebrow">Why Squirrel Apps</p>
+        <h2 id="why-title">Small apps, made with care.</h2>
+      </div>
       <div className="feature-grid">
         {features.map((f) => (
           <FeatureCard key={f.title} feature={f} />

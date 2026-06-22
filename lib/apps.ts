@@ -2,30 +2,24 @@
  * The studio's app catalog (data/config).
  *
  * Add a new app by appending an entry here and dropping its assets under
- * /public/apps/<slug>/ — the homepage and cards are config-driven, so no
- * layout duplication is needed.
+ * /public/apps/<slug>/ — the homepage and cards are config-driven.
  */
 
 export type AppPlatform = "iPhone" | "Apple Watch" | "Widgets" | "iPad" | "Mac";
-
 export type AppStatus = "available" | "coming-soon" | "in-development";
 
 export interface AppDefinition {
   slug: string;
   name: string;
-  /** Short marketing tagline. */
   tagline: string;
-  /** One-sentence description for cards. */
   description: string;
   platforms: AppPlatform[];
-  /**
-   * App icon path. May not exist yet — components fall back to a calm glass
-   * placeholder when the asset is missing (see <AppIcon />).
-   */
+  /** App icon (square). */
   icon: string;
+  /** Promo/product artwork (iPhone + Watch + widget). */
+  heroImage: string;
   status: AppStatus;
   featured: boolean;
-  /** Route to the app's page. */
   href: string;
 }
 
@@ -34,10 +28,10 @@ export const apps: AppDefinition[] = [
     slug: "b-day",
     name: "B-DAY",
     tagline: "Never miss a birthday that matters.",
-    description: "A beautifully simple birthday organizer for iPhone and Apple Watch.",
+    description: "Birthday reminders, widgets and Apple Watch support.",
     platforms: ["iPhone", "Apple Watch", "Widgets"],
-    // TODO: Drop the real B-DAY icon here. Until then <AppIcon /> shows a placeholder.
-    icon: "/apps/b-day/icon.png",
+    icon: "/apps/b-day/icon.webp",
+    heroImage: "/images/b-day/iphone-today.webp",
     status: "coming-soon",
     featured: true,
     href: "/apps/b-day"

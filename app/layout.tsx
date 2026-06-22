@@ -5,12 +5,11 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import "./globals.css";
 
-const title = "B-DAY Studio — Beautifully Simple Apps for Everyday Life";
+const title = "Squirrel Apps — Beautifully Simple Apps for Everyday Life";
 const description =
   "Thoughtful apps designed to make everyday moments easier. Discover B-DAY for iPhone and Apple Watch.";
 
 export const metadata: Metadata = {
-  // Base URL comes from config/env — never an invented production domain.
   metadataBase: new URL(siteConfig.siteUrl),
   title,
   description,
@@ -22,7 +21,6 @@ export const metadata: Metadata = {
     siteName: siteConfig.studioName,
     url: "/",
     type: "website",
-    // Open Graph preview image placeholder — drop the real file in /public/brand/.
     images: [{ url: siteConfig.brand.ogImage }]
   },
   robots: { index: true, follow: true }

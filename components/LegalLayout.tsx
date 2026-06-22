@@ -36,8 +36,8 @@ export function LegalLayout({
 
       <GlassSurface tone="violet" className="legal-draft-note">
         <p>
-          This is a technical draft based on an audit of the app, pending final legal review.
-          The governing-law jurisdiction (shown as a bracketed placeholder) is still to be set.
+          This document is based on a technical audit of the app and is pending a final
+          professional legal review before being considered definitive.
         </p>
       </GlassSurface>
 

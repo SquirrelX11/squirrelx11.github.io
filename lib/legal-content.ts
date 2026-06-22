@@ -129,7 +129,7 @@ The app is provided "as is" and "as available," without warranties of any kind t
 We may update these Terms; continued use after an update means you accept the revised Terms. You may stop using the app at any time by deleting it.
 
 ## 14. Governing law
-These Terms are governed by the laws of [COUNTRY / GOVERNING LAW], without regard to conflict-of-laws rules, and subject to any mandatory consumer protections in your country of residence.
+These Terms are governed by the laws of Georgia, without regard to conflict-of-laws rules, and subject to any mandatory consumer protections in your country of residence.
 
 ## 15. Apple Standard EULA
 B-DAY is also covered by Apple's Licensed Application End User License Agreement: [Apple Standard EULA](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/).

@@ -16,6 +16,8 @@ export type IconName =
   | "lock"
   | "cloud"
   | "document"
+  | "history"
+  | "message"
   | "mail";
 
 const paths: Record<IconName, ReactNode> = {
@@ -92,6 +94,18 @@ const paths: Record<IconName, ReactNode> = {
     <>
       <rect x="3" y="5" width="18" height="14" rx="2" />
       <path d="m4 7 8 6 8-6" />
+    </>
+  ),
+  history: (
+    <>
+      <path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1M3.5 4.5V8.5H7.5" />
+      <path d="M12 8v4.2l2.8 1.7" />
+    </>
+  ),
+  message: (
+    <>
+      <path d="M21 11.5a7.5 7.5 0 0 1-10.8 6.8L4 20l1.7-4.2A7.5 7.5 0 1 1 21 11.5Z" />
+      <path d="M9 10.5h6M9 13.5h3.5" />
     </>
   )
 };

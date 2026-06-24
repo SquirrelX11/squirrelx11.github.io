@@ -19,7 +19,9 @@ const platformIcon: Record<string, IconName> = {
 
 const features = [
   { icon: "bell" as IconName, title: "Never miss a birthday", text: "Get reminders exactly when you need them." },
+  { icon: "message" as IconName, title: "Personalized greetings", text: "Compose a warm message in seconds — pick a tone, edit, and send in a tap." },
   { icon: "widgets" as IconName, title: "Beautiful widgets", text: "See upcoming birthdays right from your Home Screen." },
+  { icon: "history" as IconName, title: "Today in History", text: "A card of notable events for each day, with facts in five languages." },
   { icon: "watch" as IconName, title: "Made for Apple Watch", text: "Check birthdays and celebrate directly from your wrist." },
   { icon: "shield" as IconName, title: "Private by design", text: "Local-first storage with optional private iCloud sync." }
 ];

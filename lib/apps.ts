@@ -35,6 +35,18 @@ export const apps: AppDefinition[] = [
     status: "coming-soon",
     featured: true,
     href: "/apps/b-day"
+  },
+  {
+    slug: "soon",
+    name: "SooN",
+    tagline: "Know what renews. Keep what matters.",
+    description: "Track subscriptions and trials, get renewal reminders, and review before you pay — private by design.",
+    platforms: ["iPhone", "Apple Watch", "Widgets"],
+    icon: "/apps/soon/icon.png",
+    heroImage: "/apps/soon/icon.png",
+    status: "coming-soon",
+    featured: false,
+    href: "/apps/soon"
   }
   // Future apps go here — one entry, no layout changes required.
 ];

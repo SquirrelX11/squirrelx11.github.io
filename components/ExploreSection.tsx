@@ -1,9 +1,10 @@
-import { featuredApp } from "@/lib/apps";
+import { featuredApp, appBySlug } from "@/lib/apps";
 import { AppCard } from "./AppCard";
 import { ComingSoonCard } from "./ComingSoonCard";
 
 export function ExploreSection() {
   const app = featuredApp();
+  const soon = appBySlug("soon");
 
   return (
     <section id="explore" className="container section" aria-labelledby="explore-title">
@@ -15,6 +16,7 @@ export function ExploreSection() {
 
       <div className="explore-grid">
         {app && <AppCard app={app} />}
+        {soon && <AppCard app={soon} eyebrow="New App" />}
         <ComingSoonCard />
       </div>
     </section>

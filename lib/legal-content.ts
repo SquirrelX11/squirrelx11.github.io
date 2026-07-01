@@ -184,3 +184,309 @@ If you exported a JSON backup, that file is wherever you saved it. Delete it lik
 
 ## Contact
 Privacy questions or requests: **[SUPPORT EMAIL]**.`;
+
+/* ============================================================================
+ * SooN — legal/support content (English), based on a technical audit of the
+ * SooN Xcode project (see SOON_LEGAL_FACTS.md). Only audited behaviour is
+ * described. Nothing about B-DAY applies here.
+ * ==========================================================================*/
+
+export const soonLegalMeta = {
+  effectiveDate: "June 26, 2026",
+  lastUpdated: "June 26, 2026"
+} as const;
+
+export const soonPrivacyBody = `SooN is a **local-first** subscription organizer for iPhone and Apple Watch. What you enter is stored **on your device**, and — only if you choose — in **your own private iCloud**. We operate **no server**, use **no analytics, advertising, or tracking**, and include **no third-party SDKs**. We never receive your subscriptions, prices, notes, photos, or screenshots. This Privacy Policy is provided by Aleksandr Pavlov (Squirrel Apps), an independent developer.
+
+## 1. Who this applies to
+This policy covers the SooN iPhone app, its widgets, and the Apple Watch app. The information you add (service names, prices, dates, notes) is entered by you, for your own use.
+
+## 2. About SooN
+SooN helps you keep track of the subscriptions and trials you already pay for: their prices, renewal dates, and reminders. SooN is **not** a bank, an accounting tool, or a financial-advice service, and it does **not** connect to any bank account or payment provider.
+
+## 3. Information the app handles
+Depending on how you use SooN, it stores: subscription names, plans, prices, currencies, billing periods, renewal and trial dates, categories, notes, custom reminders, renewal/price history, Renewal Check decisions, cancellation status (inside the app), and app settings. This is used only to provide the app's features.
+
+## 4. Where your data is stored (local-first)
+Your data is stored **locally on your device** in the app's own files, protected by your device passcode and iOS encryption. There is no developer database and no account or sign-up.
+
+## 5. iCloud sync (optional, off by default)
+SooN includes an optional iCloud Sync that is **off by default** and part of the Full (Pro) version. If you turn it on, your subscription list syncs through **your own private iCloud** (Apple's key-value store) so it stays consistent across your devices. This data is tied to your Apple ID and handled by Apple; **we have no access to it**. You can turn sync off at any time — your local data stays.
+
+## 6. Notifications (local only)
+Reminders are **local notifications** scheduled on your device from your own data. There is **no push service, no notification server, and no APNs token** — we receive nothing. A reminder can show a service name, amount, and renewal timing on your screen, including the Lock Screen. You can change or disable reminders in the app and hide previews in iOS Settings.
+
+## 7. Widgets and App Groups
+Home Screen and Lock Screen widgets read subscription information from a shared on-device container (an App Group) so they can display upcoming renewals and totals. Widgets make **no network connections**.
+
+## 8. Apple Watch and WatchConnectivity
+The Apple Watch app shows a cached snapshot of your subscriptions — names, amounts, dates, categories, a small icon, and renewal summaries — and can queue small actions (Keep / Remind) and Quick Add drafts. Data moves only between **your** iPhone and **your** paired Apple Watch using Apple's WatchConnectivity; **nothing is sent to any server from the watch**. Amounts are hidden on the watch when you turn on "Show Amounts" off.
+
+## 9. Quick Add and voice input
+On Apple Watch you can add a subscription by dictating it. SooN uses the **system dictation** provided by watchOS through a normal text field — it does **not** use the microphone directly or Apple's Speech framework, and asks for no microphone permission. Because dictation is a system feature, **Apple may process it** depending on your device, language, and settings. The recognized **text** is parsed on-device into a draft, sent to your iPhone, and becomes a subscription only when you confirm it. Drafts can be removed.
+
+## 10. Screenshot import and OCR
+The optional screenshot import (Full version) lets you pick **one** image with the system photo picker — SooN receives only that image and does **not** get access to your whole photo library. The text is read **on-device with Apple's Vision framework**; **nothing is uploaded**. The screenshot itself is **not stored**, and only the entries you confirm are added.
+
+## 11. Custom icons and photos
+If you choose a custom icon for a subscription, it is stored on your device (and mirrored to the widget/watch as a small image if applicable). No photo-library permission is required.
+
+## 12. Service logos
+By default SooN shows bundled and locally generated icons and makes **no logo network requests**. An optional remote-logo feature (a logo CDN such as Brandfetch) is **disabled unless a logo provider is configured**; when enabled, only the **service's domain** (for example, "netflix.com") — not personal data — is sent to fetch a picture.
+
+## 13. Purchases
+SooN offers a **one-time Full (Pro) purchase — not a subscription** — that unlocks extra features. Purchases are processed by **Apple** through the App Store; **we never receive your payment details**. The app stores only a local flag indicating whether Pro is unlocked. Restoring purchases is handled by Apple.
+
+## 14. Renewal Check and savings
+Renewal Check helps you decide before a charge (Keep, Remind, or Review). **Mark as Cancelled changes only the status inside SooN** — it does **not** cancel anything with the third-party provider. **Manage Subscription** opens an external page (the service's site or Apple's system Subscriptions page), which the provider controls. **Confirmed savings** come from renewals you marked as cancelled; **projected savings are an estimate** based on the data you entered — **not a guarantee**.
+
+## 15. Analytics, advertising, and tracking
+SooN contains **no analytics, no advertising, and no tracking**. There is no IDFA, no ad SDK, and no third-party analytics or crash-reporting SDK. We build no profiles and sell no data. No App Tracking Transparency prompt is shown because nothing is tracked.
+
+## 16. Third-party services
+The only third parties involved are **Apple** (App Store purchases and, if you enable it, iCloud sync) and, **only if a logo provider is configured**, a logo CDN that receives a service domain to return a picture. There are no other third-party services and no developer backend.
+
+## 17. Data sharing
+We do **not** share your data with anyone. Your content stays on your device and, if you enable sync, in your private iCloud that only you can access.
+
+## 18. Retention
+Your data stays until you delete it. There is no server copy to expire. If iCloud Sync is on, the synced copy stays in your private iCloud until you delete it.
+
+## 19. Deletion
+You can delete a single subscription in the list, or delete everything in **Settings → Security & Privacy → Delete Subscription Data**. When iCloud is reachable, this also removes the synced iCloud copy. **Uninstalling the app does not automatically erase a copy already in your iCloud** — delete synced data in the app (or from iCloud) first if you want it gone.
+
+## 20. Export and backup
+The Full version can export a backup file, which you save or share yourself. That file lives wherever you put it; delete it like any other file to remove that copy.
+
+## 21. Security
+Your data is protected by iOS device encryption and your passcode. You can add an optional Face ID lock in the app. We do not add separate encryption on top of iOS.
+
+## 22. Children
+SooN is a general-audience utility and is not directed to children. It collects no personal information for us and requires no account.
+
+## 23. International processing
+Because data stays on your device and in your private iCloud, there is no transfer of your content to us or across our servers (we have none). Apple processes iCloud and dictation under its own terms.
+
+## 24. Changes
+If this policy changes materially, we will update this page and the "last updated" date.
+
+## 25. Contact
+Privacy questions: **[SUPPORT EMAIL]**.`;
+
+export const soonTermsBody = `These Terms of Use apply to the SooN app and this website, provided by Aleksandr Pavlov (Squirrel Apps), an independent developer. The app is **licensed, not sold**, and is also subject to Apple's **Standard End User License Agreement (EULA)**. These Terms **supplement**, and do not replace, the Apple Standard EULA.
+
+## 1. Acceptance
+By using SooN, you agree to these Terms. If you do not agree, please do not use the app.
+
+## 2. The app and website
+SooN is a subscription organizer for iPhone and Apple Watch. This website provides information and legal documents about it.
+
+## 3. Eligibility
+You must be able to form a binding agreement in your country to use the app.
+
+## 4. License
+Subject to these Terms and Apple's Standard EULA, you receive a personal, non-transferable license to use SooN on Apple devices you own or control.
+
+## 5. Your subscription data
+You enter your own subscription information. You are responsible for its accuracy and for having a reasonable basis to store it.
+
+## 6. Accuracy of prices and dates
+SooN displays what you enter and reminders you set. It does **not** verify prices or dates with any provider and does **not** guarantee that a future charge will match what you entered.
+
+## 7. Renewal reminders
+Reminders are local notifications and depend on iOS. System settings, Focus modes, low-power conditions, or disabling notifications may delay or prevent a reminder. Do not rely on SooN as your only safeguard against a charge.
+
+## 8. Renewal Check
+Renewal Check helps you decide before a renewal. It is an aid, not financial advice.
+
+## 9. Cancellation limitations
+SooN does **not** cancel any third-party subscription for you. **Mark as Cancelled** changes only the status inside SooN. **Manage Subscription** may open an external page operated by the service or by Apple; what happens there is controlled by that provider.
+
+## 10. Savings and forecasts
+Confirmed and projected savings are estimates based on the data you enter. **Projected savings are not a guarantee.** SooN is not a bank, accounting, or financial-advice service and does not connect to any bank account.
+
+## 11. Free version
+Core tracking and reminders are available for free.
+
+## 12. Full (Pro) version
+Some features (such as iCloud Sync, export/import, the review queue, screenshot import, custom categories, and per-item reminders) require a one-time Full (Pro) purchase. This is a **non-consumable purchase, not an auto-renewing subscription.**
+
+## 13. Payments, restore, and refunds
+Purchases and restores are handled by **Apple** through the App Store. We do not receive your payment card details. **Refunds are handled by Apple** under its policies.
+
+## 14. Apple Watch and widgets
+The watch app and widgets display a subset of your data and may work from a cached copy. Availability depends on your devices and iOS/watchOS.
+
+## 15. External services and links
+Links to service websites or Apple's Subscriptions page open pages operated by others. We are not responsible for third-party content or actions.
+
+## 16. Backups
+Exported backup files are under your control. Keep them safe; we cannot recover them.
+
+## 17. Acceptable use
+Use SooN lawfully and do not attempt to disrupt or misuse it.
+
+## 18. Intellectual property
+SooN, its design, and its content are owned by the provider or its licensors. Third-party names and logos, where shown, belong to their owners and are used only to help you identify your own subscriptions.
+
+## 19. Availability
+The app and website are provided on an "as available" basis and may change or be discontinued.
+
+## 20. Disclaimers
+To the extent permitted by law, SooN is provided "as is" without warranties of any kind. We do not warrant that reminders will always be delivered or that entered figures are accurate.
+
+## 21. Limitation of liability
+To the extent permitted by law, the provider is not liable for indirect or consequential losses, or for missed charges, renewals, or cancellations. Nothing limits liability that cannot be limited by law.
+
+## 22. Changes and termination
+We may update these Terms; material changes will be reflected here with a new date. Your license ends if you stop using or delete the app.
+
+## 23. Governing law
+These Terms are governed by the laws applicable at the provider's place of residence, without regard to conflict-of-laws rules. This does not remove mandatory consumer-protection rights you have in your country.
+
+## 24. Apple Standard EULA
+Unless a custom EULA is presented in the App Store, your use is also governed by Apple's Standard EULA: [apple.com/legal/internet-services/itunes/dev/stdeula](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/). These Terms supplement it.
+
+## 25. Contact
+Questions about these Terms: **[SUPPORT EMAIL]**.`;
+
+export const soonSupportBody = `Need help? Email **[SUPPORT EMAIL]**. SooN has no accounts and no server, so there is nothing to recover on our side — but we're happy to help.
+
+When reporting a problem, please include your iPhone model, Apple Watch model (if relevant), iOS and watchOS versions, the app version, what you did, and a screenshot **without sensitive details**. Never send passwords, payment card details, or Apple ID credentials.
+
+## Notifications
+If reminders don't appear, make sure notifications are allowed for SooN in iOS Settings, that Focus/Do Not Disturb isn't hiding them, and that reminders are enabled in the app.
+
+## Upcoming renewals
+The dashboard shows renewals from the dates you entered. If something looks off, open the subscription and check its renewal date.
+
+## Incorrect renewal date
+Open the subscription and edit the date. SooN never changes dates on its own.
+
+## Trial reminders
+Set a trial end date on the subscription to get a reminder before it converts.
+
+## Renewal Check
+Renewal Check lists items to decide on before they renew (Keep, Remind, Review). It never cancels anything with a provider.
+
+## Mark as Cancelled
+This changes the status **inside SooN only**. To actually cancel, use **Manage Subscription** to open the service's page or Apple's Subscriptions settings.
+
+## Savings calculation
+Confirmed savings come from renewals you marked cancelled; projected savings are an estimate from your data. They are not guarantees.
+
+## iCloud Sync
+iCloud Sync (Full version) is off by default. Turn it on in **Settings → iCloud Sync** while signed in to iCloud. It uses your private iCloud; we can't see your data.
+
+## Sync Now
+Use **Sync Now** on the iCloud Sync screen to push and pull immediately. Both devices must be signed in to the same iCloud account with sync on.
+
+## Apple Watch
+Open the SooN iPhone app once near your watch so it can send the latest snapshot. The watch shows a cached copy and works offline.
+
+## Watch pending sync
+If the watch shows "waiting" or a pending action, open the iPhone app nearby; queued actions sync when the devices are reachable.
+
+## Widgets & complications
+Add SooN widgets from the Home Screen, and complications from your watch face. They read on-device data and update periodically.
+
+## Quick Add / voice
+On the watch, dictate a subscription; SooN parses the text into a draft. Finish or confirm it on the iPhone if needed.
+
+## Screenshot import
+In the Full version, pick a screenshot of your subscriptions; SooN reads it on-device with Vision and shows entries to review. Nothing is uploaded.
+
+## Custom icons
+Choose a custom icon for a subscription from its detail screen.
+
+## Restore Purchases / Pro not unlocking
+Use **Restore Purchases** while signed in to the Apple ID that made the purchase. If Pro still doesn't unlock, check your internet connection and try again, then contact us.
+
+## Export and restore
+The Full version can export a backup file you save yourself, and import it back.
+
+## Delete local data
+Use **Settings → Security & Privacy → Delete Subscription Data** to remove everything on the device.
+
+## Delete local and iCloud data
+The same action also clears the synced iCloud copy when iCloud is reachable. Uninstalling the app alone does not erase a copy already in iCloud — delete synced data in the app first.
+
+## Privacy
+See the [Privacy Policy](/apps/soon/privacy/) and [Privacy Choices](/apps/soon/privacy-choices/).`;
+
+export const soonPrivacyChoicesBody = `You control your data in SooN. Here is exactly how, with the in-app paths.
+
+## Notifications
+Turn reminders on or off in the app's Notifications settings, and control system delivery in iOS Settings → Notifications → SooN.
+
+## iCloud Sync
+Turn syncing on or off in **Settings → iCloud Sync** (Full version). It is off by default and uses your private iCloud.
+
+## Apple Watch sync
+The watch mirrors your iPhone automatically over WatchConnectivity. Open the iPhone app nearby to send the latest snapshot.
+
+## Show Amounts
+Hide all amounts on the watch (and widgets) with the **Show Amounts** toggle in the watch settings.
+
+## Photos access
+SooN uses the system photo picker for screenshot import, so it sees only the image you pick — there is no full photo-library permission to manage.
+
+## Voice and Speech
+Quick Add uses watchOS system dictation; SooN uses no microphone permission. Manage dictation in iOS/watchOS settings.
+
+## Screenshot import
+Optional and Full-version only. The image is read on-device and not stored.
+
+## Face ID lock
+Turn the optional app lock on or off in **Settings → Security & Privacy**.
+
+## Exported files
+If you exported a backup, that file is wherever you saved it. Delete it like any other file.
+
+## Delete one subscription
+Swipe or delete a subscription in the list to remove it and its reminders.
+
+## Delete local data
+**Settings → Security & Privacy → Delete Subscription Data** removes everything on the device.
+
+## Delete local and iCloud data
+The same action clears the iCloud copy when iCloud is reachable. Delete synced data before uninstalling if you want the iCloud copy gone.
+
+## Contact
+Privacy questions: **[SUPPORT EMAIL]**.`;
+
+export type FaqItem = { q: string; a: string };
+
+export const soonFaq: FaqItem[] = [
+  { q: "What is SooN?", a: "A private, local-first organizer for the subscriptions and trials you already pay for — with renewal reminders, a review-before-you-pay flow, widgets, and Apple Watch." },
+  { q: "Is SooN itself a subscription?", a: "No. SooN's Full (Pro) version is a one-time purchase, not an auto-renewing subscription." },
+  { q: "Is Pro a one-time purchase?", a: "Yes — a single non-consumable purchase handled by Apple." },
+  { q: "Does SooN connect to my bank?", a: "No. SooN never connects to a bank or payment account. You enter your subscriptions yourself." },
+  { q: "Can SooN automatically find every subscription?", a: "No. You add subscriptions manually, or import them from a screenshot (Full version) that is read on-device — you confirm what's added." },
+  { q: "Can SooN cancel a subscription for me?", a: "No. SooN can open the service's page or Apple's Subscriptions settings, but it never cancels on your behalf." },
+  { q: "What does “Mark as Cancelled” do?", a: "It changes the status inside SooN only. It does not cancel anything with the provider." },
+  { q: "What is Renewal Check?", a: "A gentle review of upcoming renewals so you can decide — Keep, Remind, or Review — before a charge." },
+  { q: "How are projected savings calculated?", a: "As an estimate based on the subscriptions and prices you entered. They are not a guarantee." },
+  { q: "What is confirmed savings?", a: "Savings from renewals you actually marked as cancelled in SooN." },
+  { q: "Are savings guaranteed?", a: "No. All savings figures are estimates based on your own data." },
+  { q: "Where is my data stored?", a: "On your device, and — only if you turn it on — in your own private iCloud." },
+  { q: "Can the developer see my subscriptions?", a: "No. There is no server and no developer access. Your data stays on your device and your private iCloud." },
+  { q: "Is iCloud Sync optional?", a: "Yes. It is off by default and part of the Full version." },
+  { q: "What happens if I turn off iCloud Sync?", a: "Your local data stays on the device. Nothing is deleted." },
+  { q: "What happens if I delete the app?", a: "Local data is removed. A copy already in your iCloud is not automatically erased — delete synced data in the app first if you want it gone." },
+  { q: "How do I delete iCloud data?", a: "Use Settings → Security & Privacy → Delete Subscription Data while iCloud is reachable; it clears the synced copy too." },
+  { q: "Does SooN use analytics?", a: "No analytics, and no third-party SDKs at all." },
+  { q: "Does SooN show ads?", a: "No advertising." },
+  { q: "Does SooN track me?", a: "No tracking, no IDFA, and no App Tracking Transparency prompt." },
+  { q: "How do reminders work?", a: "They are local notifications scheduled on your device from your data. There is no push server." },
+  { q: "Why did a notification not appear?", a: "iOS may delay or hide notifications due to settings, Focus modes, or low power. Check that notifications are allowed for SooN." },
+  { q: "How does Apple Watch sync work?", a: "Your iPhone sends a snapshot to your paired watch over WatchConnectivity; the watch caches it and works offline. No server is involved." },
+  { q: "Can I add a subscription from Apple Watch?", a: "Yes — dictate or type it as a Quick Add draft, which syncs to your iPhone." },
+  { q: "Does voice Quick Add send audio to the developer?", a: "No. It uses watchOS system dictation; SooN receives text, not audio, and sends nothing to us. Apple may process dictation as a system feature." },
+  { q: "How do widgets work?", a: "They read your on-device data from a shared container to show upcoming renewals and totals. They make no network calls." },
+  { q: "How do I hide amounts on Apple Watch?", a: "Turn off Show Amounts in the watch settings to mask amounts on the watch and its widgets." },
+  { q: "How do I restore Pro?", a: "Use Restore Purchases while signed in to the Apple ID that bought it." },
+  { q: "Can I use multiple currencies?", a: "Yes. Each subscription keeps its own currency." },
+  { q: "How are annual and monthly equivalents calculated?", a: "SooN normalizes each subscription's price to monthly and yearly figures based on its billing period." },
+  { q: "How do I contact support?", a: "Email [SUPPORT EMAIL]." }
+];

@@ -14,12 +14,14 @@ export function LegalLayout({
   eyebrow,
   title,
   body,
-  showDates = true
+  showDates = true,
+  meta = legalMeta
 }: {
   eyebrow: string;
   title: string;
   body: string;
   showDates?: boolean;
+  meta?: { effectiveDate: string; lastUpdated: string };
 }) {
   const filled = fillTokens(body);
   const toc = tocFromMarkdown(filled);
@@ -30,7 +32,7 @@ export function LegalLayout({
       <h1>{title}</h1>
       {showDates && (
         <p className="legal-dates">
-          Effective date: {legalMeta.effectiveDate} · Last updated: {legalMeta.lastUpdated}
+          Effective date: {meta.effectiveDate} · Last updated: {meta.lastUpdated}
         </p>
       )}
 

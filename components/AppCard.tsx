@@ -11,14 +11,14 @@ const platformIcon: Record<string, IconName> = {
 };
 
 /** Featured app card (B-DAY). The whole card is a link to the app page. */
-export function AppCard({ app }: { app: AppDefinition }) {
+export function AppCard({ app, eyebrow = "Featured App" }: { app: AppDefinition; eyebrow?: string }) {
   return (
     <Link
       href={app.href}
       className="glass glass-violet app-card"
       aria-label={`${app.name} — ${app.tagline}`}
     >
-      <p className="eyebrow">Featured App</p>
+      <p className="eyebrow">{eyebrow}</p>
 
       <div className="app-card-head">
         <span className="app-icon" aria-hidden="true">

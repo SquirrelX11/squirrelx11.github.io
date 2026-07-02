@@ -40,3 +40,8 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # Pages backend has been slow to confirm; wait longer than the 10-min
+          # default so a slow-but-successful publish isn't aborted as a "timeout".
+          timeout: 1800000
+          error_count: 20

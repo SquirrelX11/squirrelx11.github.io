@@ -232,7 +232,7 @@ The optional screenshot import (Full version) lets you pick **one** image with t
 If you choose a custom icon for a subscription, it is stored on your device (and mirrored to the widget/watch as a small image if applicable). No photo-library permission is required.
 
 ## 12. Service logos
-By default SooN shows bundled and locally generated icons and makes **no logo network requests**. An optional remote-logo feature (a logo CDN such as Brandfetch) is **disabled unless a logo provider is configured**; when enabled, only the **service's domain** (for example, "netflix.com") — not personal data — is sent to fetch a picture.
+To show recognizable service logos, SooN fetches them from **Brandfetch's logo CDN** (\`cdn.brandfetch.io\`), and may fall back to open icon sources or a site's favicon. To fetch a logo, **only the service's public domain** (for example, "netflix.com") is sent — **no personal data, no account information, and nothing that identifies you**. Logos are cached on your device; if one can't be fetched, a generated icon is shown instead.
 
 ## 13. Purchases
 SooN offers a **one-time Full (Pro) purchase — not a subscription** — that unlocks extra features. Purchases are processed by **Apple** through the App Store; **we never receive your payment details**. The app stores only a local flag indicating whether Pro is unlocked. Restoring purchases is handled by Apple.
@@ -244,7 +244,7 @@ Renewal Check helps you decide before a charge (Keep, Remind, or Review). **Mark
 SooN contains **no analytics, no advertising, and no tracking**. There is no IDFA, no ad SDK, and no third-party analytics or crash-reporting SDK. We build no profiles and sell no data. No App Tracking Transparency prompt is shown because nothing is tracked.
 
 ## 16. Third-party services
-The only third parties involved are **Apple** (App Store purchases and, if you enable it, iCloud sync) and, **only if a logo provider is configured**, a logo CDN that receives a service domain to return a picture. There are no other third-party services and no developer backend.
+The third parties involved are **Apple** (App Store purchases and, if you enable it, iCloud sync) and **Brandfetch** (a logo CDN that returns a service's logo from its domain; open icon sources or a site's favicon may also be used). These logo services receive only a service **domain** to return a picture — never personal data. There are no analytics, advertising, or tracking services, and no developer backend.
 
 ## 17. Data sharing
 We do **not** share your data with anyone. Your content stays on your device and, if you enable sync, in your private iCloud that only you can access.
@@ -256,7 +256,7 @@ Your data stays until you delete it. There is no server copy to expire. If iClou
 You can delete a single subscription in the list, or delete everything in **Settings → Security & Privacy → Delete Subscription Data**. When iCloud is reachable, this also removes the synced iCloud copy. **Uninstalling the app does not automatically erase a copy already in your iCloud** — delete synced data in the app (or from iCloud) first if you want it gone.
 
 ## 20. Export and backup
-The Full version can export a backup file, which you save or share yourself. That file lives wherever you put it; delete it like any other file to remove that copy.
+The Full version can **export** a backup file (and **import** one back to restore). An exported file is saved or shared by you and lives wherever you put it; delete it like any other file to remove that copy.
 
 ## 21. Security
 Your data is protected by iOS device encryption and your passcode. You can add an optional Face ID lock in the app. We do not add separate encryption on top of iOS.
@@ -309,7 +309,7 @@ Confirmed and projected savings are estimates based on the data you enter. **Pro
 Core tracking and reminders are available for free.
 
 ## 12. Full (Pro) version
-Some features (such as iCloud Sync, export/import, the review queue, screenshot import, custom categories, and per-item reminders) require a one-time Full (Pro) purchase. This is a **non-consumable purchase, not an auto-renewing subscription.**
+Some features (such as iCloud Sync, export/import, the review queue, screenshot import, custom categories, and per-item reminders) require a one-time Full (Pro) purchase. This is a **non-consumable purchase, not an auto-renewing subscription**, and it supports **Family Sharing**.
 
 ## 13. Payments, restore, and refunds
 Purchases and restores are handled by **Apple** through the App Store. We do not receive your payment card details. **Refunds are handled by Apple** under its policies.
@@ -486,6 +486,8 @@ export const soonFaq: FaqItem[] = [
   { q: "How do widgets work?", a: "They read your on-device data from a shared container to show upcoming renewals and totals. They make no network calls." },
   { q: "How do I hide amounts on Apple Watch?", a: "Turn off Show Amounts in the watch settings to mask amounts on the watch and its widgets." },
   { q: "How do I restore Pro?", a: "Use Restore Purchases while signed in to the Apple ID that bought it." },
+  { q: "Can I share Pro with my family?", a: "Yes — the Full (Pro) purchase supports Family Sharing, so your Family Sharing group can use it." },
+  { q: "Where do the service logos come from?", a: "SooN fetches recognizable logos from Brandfetch's logo CDN using only the service's public domain (e.g. netflix.com). No personal data is sent, and logos are cached on your device." },
   { q: "Can I use multiple currencies?", a: "Yes. Each subscription keeps its own currency." },
   { q: "How are annual and monthly equivalents calculated?", a: "SooN normalizes each subscription's price to monthly and yearly figures based on its billing period." },
   { q: "How do I contact support?", a: "Email [SUPPORT EMAIL]." }

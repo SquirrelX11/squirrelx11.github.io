@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.siteUrl.replace(/\/$/, "");
   const staticRoutes = ["/", "/support", "/privacy", "/terms"];
   const appRoutes = apps.map((app) => app.href);
-  // SooN legal sub-pages (indexable).
+  // Renewise legal sub-pages (indexable).
   const soonRoutes = [
     "/apps/soon/privacy",
     "/apps/soon/terms",

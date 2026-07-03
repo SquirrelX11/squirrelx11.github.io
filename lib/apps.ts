@@ -12,6 +12,8 @@ export interface AppDefinition {
   slug: string;
   name: string;
   tagline: string;
+  /** Optional App Store-style subtitle shown under the name. */
+  subtitle?: string;
   description: string;
   platforms: AppPlatform[];
   /** App icon (square). */
@@ -38,8 +40,9 @@ export const apps: AppDefinition[] = [
   },
   {
     slug: "soon",
-    name: "SooN",
-    tagline: "Know what renews. Keep what matters.",
+    name: "Renewise",
+    tagline: "Renew smarter. Spend better.",
+    subtitle: "Renewals, trials and savings",
     description: "Track subscriptions and trials, get renewal reminders, and review before you pay — private by design.",
     platforms: ["iPhone", "Apple Watch", "Widgets"],
     icon: "/apps/soon/icon.png",

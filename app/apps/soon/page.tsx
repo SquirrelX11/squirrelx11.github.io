@@ -6,7 +6,7 @@ import { GlassSurface } from "@/components/GlassSurface";
 import { Icon, type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
-  title: "SooN — Subscription Organizer for iPhone and Apple Watch",
+  title: "Renewise — Subscription Organizer for iPhone and Apple Watch",
   description:
     "Track subscriptions and trials, get renewal reminders, review before you pay, and see your savings — private, local-first, with optional iCloud sync.",
   alternates: { canonical: "/apps/soon" }
@@ -27,7 +27,7 @@ const features = [
   { icon: "widgets" as IconName, title: "Beautiful widgets", text: "Upcoming renewals and this month's total on your Home and Lock Screen." }
 ];
 
-// Only claims supported by the SooN privacy audit.
+// Only claims supported by the Renewise privacy audit.
 const privacy = [
   { icon: "lock" as IconName, text: "No account required" },
   { icon: "iphone" as IconName, text: "Local-first storage" },
@@ -55,7 +55,7 @@ export default function SoonPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={app.icon} alt="" className="app-icon-img" />
           </span>
-          <h1 id="soon-title" style={{ marginTop: 14 }}>SooN</h1>
+          <h1 id="soon-title" style={{ marginTop: 14 }}>Renewise</h1>
           <p className="bday-hero-tagline">Know what renews. Keep what matters.</p>
           <p className="bday-hero-sub">
             A private, local-first subscription organizer for iPhone and Apple Watch.
@@ -110,7 +110,7 @@ export default function SoonPage() {
             ))}
           </div>
           <Link href={routes.soonPrivacy} className="app-card-cta" style={{ marginTop: 18 }}>
-            Read the SooN Privacy Policy
+            Read the Renewise Privacy Policy
             <Icon name="arrow" />
           </Link>
         </GlassSurface>
@@ -119,7 +119,7 @@ export default function SoonPage() {
       {/* Resources */}
       <section className="section" aria-labelledby="soon-resources-title">
         <div className="section-head">
-          <p className="eyebrow">SooN Resources</p>
+          <p className="eyebrow">Renewise Resources</p>
           <h2 id="soon-resources-title">Help &amp; legal.</h2>
         </div>
         <div className="resource-grid">

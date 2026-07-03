@@ -24,7 +24,7 @@ export function SiteFooter() {
             <li><Link href={routes.home}>Home</Link></li>
             <li><Link href={routes.apps}>Apps</Link></li>
             <li><Link href={routes.bday}>B-DAY</Link></li>
-            <li><Link href={routes.soon}>SooN</Link></li>
+            <li><Link href={routes.soon}>Renewise</Link></li>
           </ul>
         </nav>
 

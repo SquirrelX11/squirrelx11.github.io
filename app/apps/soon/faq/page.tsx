@@ -5,19 +5,19 @@ import { soonFaq, fillTokens } from "@/lib/legal-content";
 import { Icon } from "@/components/Icon";
 
 export const metadata: Metadata = {
-  title: "FAQ — SooN",
+  title: "FAQ — Renewise",
   description:
-    "Answers about SooN: privacy, iCloud sync, Renewal Check, savings, Apple Watch, Quick Add, purchases, notifications, and more.",
+    "Answers about Renewise: privacy, iCloud sync, Renewal Check, savings, Apple Watch, Quick Add, purchases, notifications, and more.",
   alternates: { canonical: "/apps/soon/faq" }
 };
 
 export default function Page() {
   return (
     <main id="main" className="container page legal">
-      <p className="eyebrow">SooN · Support</p>
+      <p className="eyebrow">Renewise · Support</p>
       <h1>Frequently asked questions</h1>
       <p className="lead" style={{ marginTop: 8 }}>
-        Straight answers, based on how SooN actually works.
+        Straight answers, based on how Renewise actually works.
       </p>
 
       <div style={{ marginTop: 24, display: "grid", gap: 12 }}>

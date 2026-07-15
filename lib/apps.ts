@@ -45,11 +45,11 @@ export const apps: AppDefinition[] = [
     subtitle: "Renewals, trials and savings",
     description: "Track subscriptions and trials, get renewal reminders, and review before you pay — private by design.",
     platforms: ["iPhone", "Apple Watch", "Widgets"],
-    icon: "/apps/soon/icon.png",
-    heroImage: "/apps/soon/icon.png",
+    icon: "/apps/renewise/icon.png",
+    heroImage: "/apps/renewise/icon.png",
     status: "coming-soon",
     featured: false,
-    href: "/apps/soon"
+    href: "/apps/renewise"
   }
   // Future apps go here — one entry, no layout changes required.
 ];

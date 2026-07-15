@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Privacy Choices — Renewise",
   description:
     "Your privacy controls in Renewise, with the exact in-app paths: notifications, iCloud sync, Show Amounts, screenshot import, and deleting local or iCloud data.",
-  alternates: { canonical: "/apps/soon/privacy-choices" }
+  alternates: { canonical: "/apps/renewise/privacy-choices" }
 };
 
 export default function Page() {

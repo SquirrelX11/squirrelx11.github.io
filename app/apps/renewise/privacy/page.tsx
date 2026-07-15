@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy — Renewise",
   description:
     "How Renewise handles your information: local-first storage, optional private iCloud sync, on-device OCR, no analytics, no tracking, no third-party SDKs.",
-  alternates: { canonical: "/apps/soon/privacy" }
+  alternates: { canonical: "/apps/renewise/privacy" }
 };
 
 export default function Page() {

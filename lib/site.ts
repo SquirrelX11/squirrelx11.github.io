@@ -59,10 +59,10 @@ export const routes = {
   bdaySupport: "/apps/b-day/support",
   bdayPrivacyChoices: "/apps/b-day/privacy-choices",
   // App-specific (Renewise) legal routes — canonical for the app.
-  soon: "/apps/soon",
-  soonPrivacy: "/apps/soon/privacy",
-  soonTerms: "/apps/soon/terms",
-  soonSupport: "/apps/soon/support",
-  soonFaq: "/apps/soon/faq",
-  soonPrivacyChoices: "/apps/soon/privacy-choices"
+  soon: "/apps/renewise",
+  soonPrivacy: "/apps/renewise/privacy",
+  soonTerms: "/apps/renewise/terms",
+  soonSupport: "/apps/renewise/support",
+  soonFaq: "/apps/renewise/faq",
+  soonPrivacyChoices: "/apps/renewise/privacy-choices"
 } as const;

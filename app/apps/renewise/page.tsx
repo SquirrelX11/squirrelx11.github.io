@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Renewise — Subscription Organizer for iPhone and Apple Watch",
   description:
     "Track subscriptions and trials, get renewal reminders, review before you pay, and see your savings — private, local-first, with optional iCloud sync.",
-  alternates: { canonical: "/apps/soon" }
+  alternates: { canonical: "/apps/renewise" }
 };
 
 const platformIcon: Record<string, IconName> = {

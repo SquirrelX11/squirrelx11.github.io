@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Support — Renewise",
   description:
     "Help with Renewise: notifications, renewals, Renewal Check, savings, iCloud sync, Apple Watch, widgets, Quick Add, purchases, and deleting your data.",
-  alternates: { canonical: "/apps/soon/support" }
+  alternates: { canonical: "/apps/renewise/support" }
 };
 
 export default function Page() {

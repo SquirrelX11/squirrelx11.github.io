@@ -412,7 +412,7 @@ Use **Settings → Security & Privacy → Delete Subscription Data** to remove e
 The same action also clears the synced iCloud copy when iCloud is reachable. Uninstalling the app alone does not erase a copy already in iCloud — delete synced data in the app first.
 
 ## Privacy
-See the [Privacy Policy](/apps/soon/privacy/) and [Privacy Choices](/apps/soon/privacy-choices/).`;
+See the [Privacy Policy](/apps/renewise/privacy/) and [Privacy Choices](/apps/renewise/privacy-choices/).`;
 
 export const soonPrivacyChoicesBody = `You control your data in Renewise. Here is exactly how, with the in-app paths.
 

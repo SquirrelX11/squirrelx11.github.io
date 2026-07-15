@@ -10,11 +10,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const appRoutes = apps.map((app) => app.href);
   // Renewise legal sub-pages (indexable).
   const soonRoutes = [
-    "/apps/soon/privacy",
-    "/apps/soon/terms",
-    "/apps/soon/support",
-    "/apps/soon/faq",
-    "/apps/soon/privacy-choices"
+    "/apps/renewise/privacy",
+    "/apps/renewise/terms",
+    "/apps/renewise/support",
+    "/apps/renewise/faq",
+    "/apps/renewise/privacy-choices"
   ];
 
   return [...staticRoutes, ...appRoutes, ...soonRoutes].map((path) => ({

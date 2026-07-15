@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Terms of Use — Renewise",
   description:
     "Terms of Use for Renewise. The app is licensed, not sold, and supplements Apple's Standard EULA. Renewise is not a bank or financial-advice service.",
-  alternates: { canonical: "/apps/soon/terms" }
+  alternates: { canonical: "/apps/renewise/terms" }
 };
 
 export default function Page() {

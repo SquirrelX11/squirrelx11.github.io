@@ -196,7 +196,7 @@ export const soonLegalMeta = {
   lastUpdated: "July 3, 2026"
 } as const;
 
-export const soonPrivacyBody = `Renewise is a **local-first** subscription organizer for iPhone and Apple Watch. What you enter is stored **on your device**, and — only if you choose — in **your own private iCloud**. We operate **no server**, use **no analytics, advertising, or tracking**, and include **no third-party SDKs**. We never receive your subscriptions, prices, notes, photos, or screenshots. This Privacy Policy is provided by Aleksandr Pavlov (Squirrel Apps), an independent developer.
+export const soonPrivacyBody = `Renewise is a **local-first** subscription organizer for iPhone and Apple Watch. What you enter is stored **on your device**, and — only if you choose — in **your own private iCloud**. We run **no user database and no accounts**, use **no analytics, advertising, or tracking**, and include **no third-party SDKs**. We never receive your subscriptions, prices, notes, photos, or screenshots. The only service we operate is a **logo cache** that returns public brand logos — it receives a service's public domain and nothing about you (see §12). This Privacy Policy is provided by Aleksandr Pavlov (Squirrel Apps), an independent developer.
 
 ## 1. Who this applies to
 This policy covers the Renewise iPhone app, its widgets, and the Apple Watch app. The information you add (service names, prices, dates, notes) is entered by you, for your own use.
@@ -232,7 +232,11 @@ The optional screenshot import (Full version) lets you pick **one** image with t
 If you choose a custom icon for a subscription, it is stored on your device (and mirrored to the widget/watch as a small image if applicable). No photo-library permission is required.
 
 ## 12. Service logos
-To show recognizable service logos, Renewise fetches them from **Brandfetch's logo CDN** (\`cdn.brandfetch.io\`), and may fall back to open icon sources or a site's favicon. To fetch a logo, **only the service's public domain** (for example, "netflix.com") is sent — **no personal data, no account information, and nothing that identifies you**. Logos are cached on your device; if one can't be fetched, a generated icon is shown instead.
+To show recognizable service logos, Renewise asks **our own logo cache** — a Cloudflare Worker we operate — for a logo by domain. That proxy fetches the logo from **Brandfetch** once and caches it on the edge for everyone, so Brandfetch is not contacted per user. If a logo isn't available there, the app falls back to **Simple Icons** or a site's favicon via **DuckDuckGo**.
+
+To fetch a logo, **only the service's public domain** (for example, "netflix.com") is sent — **no personal data, no account information, no prices, and nothing you typed**. As with any request to any website, our proxy and those fallback providers necessarily see the **IP address** the request comes from; we do not use it to build a profile and we do not link it to any identity — we have no account system to link it to.
+
+Logos are cached on your device, so a given service is normally requested once. If nothing can be fetched, a generated icon is shown instead and no further requests are made.
 
 ## 13. Purchases
 Renewise offers a **one-time Full (Pro) purchase — not a subscription** — that unlocks extra features. Purchases are processed by **Apple** through the App Store; **we never receive your payment details**. The app stores only a local flag indicating whether Pro is unlocked. Restoring purchases is handled by Apple.
@@ -244,13 +248,21 @@ Renewal Check helps you decide before a charge (Keep, Remind, or Review). **Mark
 Renewise contains **no analytics, no advertising, and no tracking**. There is no IDFA, no ad SDK, and no third-party analytics or crash-reporting SDK. We build no profiles and sell no data. No App Tracking Transparency prompt is shown because nothing is tracked.
 
 ## 16. Third-party services
-The third parties involved are **Apple** (App Store purchases and, if you enable it, iCloud sync) and **Brandfetch** (a logo CDN that returns a service's logo from its domain; open icon sources or a site's favicon may also be used). These logo services receive only a service **domain** to return a picture — never personal data. There are no analytics, advertising, or tracking services, and no developer backend.
+The parties involved are:
+
+- **Apple** — App Store purchases and, if you enable it, iCloud sync.
+- **Cloudflare** — hosts the logo cache we operate (§12).
+- **Brandfetch** — the logo source behind that cache.
+- **Simple Icons**, **DuckDuckGo** — fallback logo sources, used only when the cache has no logo.
+- **open.er-api.com** — a public exchange-rate table, downloaded once a day only if you track more than one currency. It receives no data about you.
+
+The logo services receive only a service **domain** to return a picture — never personal data. There are no analytics, advertising, tracking, or crash-reporting services, and no user database.
 
 ## 17. Data sharing
 We do **not** share your data with anyone. Your content stays on your device and, if you enable sync, in your private iCloud that only you can access.
 
 ## 18. Retention
-Your data stays until you delete it. There is no server copy to expire. If iCloud Sync is on, the synced copy stays in your private iCloud until you delete it.
+Your data stays until you delete it. We hold no copy of it, so there is nothing on our side to expire. If iCloud Sync is on, the synced copy stays in your private iCloud until you delete it. Our logo cache stores brand logos only — never anything of yours.
 
 ## 19. Deletion
 You can delete a single subscription in the list, or delete everything in **Settings → Security & Privacy → Delete Subscription Data**. When iCloud is reachable, this also removes the synced iCloud copy. **Uninstalling the app does not automatically erase a copy already in your iCloud** — delete synced data in the app (or from iCloud) first if you want it gone.
@@ -350,7 +362,7 @@ Unless a custom EULA is presented in the App Store, your use is also governed by
 ## 25. Contact
 Questions about these Terms: **[SUPPORT EMAIL]**.`;
 
-export const soonSupportBody = `Need help? Email **[SUPPORT EMAIL]**. Renewise has no accounts and no server, so there is nothing to recover on our side — but we're happy to help.
+export const soonSupportBody = `Need help? Email **[SUPPORT EMAIL]**. Renewise has no accounts and holds none of your data, so there is nothing to recover on our side — but we're happy to help.
 
 When reporting a problem, please include your iPhone model, Apple Watch model (if relevant), iOS and watchOS versions, the app version, what you did, and a screenshot **without sensitive details**. Never send passwords, payment card details, or Apple ID credentials.
 
@@ -470,7 +482,7 @@ export const soonFaq: FaqItem[] = [
   { q: "What is confirmed savings?", a: "Savings from renewals you actually marked as cancelled in Renewise." },
   { q: "Are savings guaranteed?", a: "No. All savings figures are estimates based on your own data." },
   { q: "Where is my data stored?", a: "On your device, and — only if you turn it on — in your own private iCloud." },
-  { q: "Can the developer see my subscriptions?", a: "No. There is no server and no developer access. Your data stays on your device and your private iCloud." },
+  { q: "Can the developer see my subscriptions?", a: "No. There is no user database and no developer access — your data stays on your device and in your private iCloud. The one service we run is a logo cache, and it only ever receives a service's public domain (like \"netflix.com\") so it can hand back that brand's logo. It never sees your list, your prices, or your notes." },
   { q: "Is iCloud Sync optional?", a: "Yes. It is off by default and part of the Full version." },
   { q: "What happens if I turn off iCloud Sync?", a: "Your local data stays on the device. Nothing is deleted." },
   { q: "What happens if I delete the app?", a: "Local data is removed. A copy already in your iCloud is not automatically erased — delete synced data in the app first if you want it gone." },

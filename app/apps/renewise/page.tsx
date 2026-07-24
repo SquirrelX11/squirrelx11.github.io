@@ -35,6 +35,15 @@ const privacy = [
   { icon: "sparkles" as IconName, text: "No advertising or tracking" }
 ];
 
+const screenshots = [
+  { src: "/apps/renewise/screens/1.jpg", alt: "Renewise dashboard with this month's total and upcoming renewals" },
+  { src: "/apps/renewise/screens/2.jpg", alt: "Renewal Check — review a subscription before it renews" },
+  { src: "/apps/renewise/screens/3.jpg", alt: "Add a subscription by voice" },
+  { src: "/apps/renewise/screens/4.jpg", alt: "Spending overview by category" },
+  { src: "/apps/renewise/screens/5.jpg", alt: "Timeline of upcoming renewals" },
+  { src: "/apps/renewise/screens/6.jpg", alt: "Renewise on Apple Watch and widgets" }
+];
+
 const resources = [
   { icon: "shield" as IconName, label: "Privacy Policy", href: routes.soonPrivacy },
   { icon: "document" as IconName, label: "Terms of Use", href: routes.soonTerms },
@@ -69,11 +78,28 @@ export default function SoonPage() {
             ))}
           </div>
           <div className="hero-actions" style={{ marginTop: 26, justifyContent: "center" }}>
-            {/* Non-clickable until a real App Store URL exists. */}
+            {/* App releases Aug 8 — swap this span for a real App Store link then:
+                <a className="availability-btn" href="https://apps.apple.com/app/id6787124838">Download on the App Store</a> */}
             <span className="availability-btn" aria-disabled="true">
               Coming soon on the App Store
             </span>
           </div>
+        </div>
+      </section>
+
+      {/* Screenshots showcase */}
+      <section className="section" aria-labelledby="soon-shots-title">
+        <div className="section-head">
+          <p className="eyebrow">A closer look</p>
+          <h2 id="soon-shots-title">Calm, native, and clear.</h2>
+        </div>
+        <div className="rw-shots" role="list">
+          {screenshots.map((s) => (
+            <div className="rw-shot" role="listitem" key={s.src}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={s.src} alt={s.alt} loading="lazy" />
+            </div>
+          ))}
         </div>
       </section>
 

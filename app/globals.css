@@ -2278,3 +2278,35 @@ main {
 /* Frozen hero glows: cap opacity so the bottom glow doesn't read as a bright band/edge. */
 .hero-section::before { opacity: 0.7; }
 .hero-section::after { opacity: 0.85; }
+
+/* Renewise — screenshot showcase */
+.rw-shots {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding: 8px 2px 20px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.rw-shots::-webkit-scrollbar { height: 6px; }
+.rw-shots::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.14); border-radius: 3px; }
+.rw-shot {
+  flex: 0 0 auto;
+  width: 216px;
+  scroll-snap-align: center;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 24px 60px -24px rgba(0,0,0,0.65), 0 2px 8px rgba(0,0,0,0.4);
+  background: rgba(255,255,255,0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.rw-shot:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px -22px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.45);
+}
+.rw-shot img { display: block; width: 100%; height: auto; }
+@media (min-width: 1040px) {
+  .rw-shots { justify-content: center; }
+}

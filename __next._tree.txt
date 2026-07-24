@@ -1,0 +1,9 @@
+:HL["/_next/static/chunks/00kshbz33cy48.css","style"]
+:HL["/brand/squirrel-logo.webp","image"]
+:HL["/images/decor/orbit-particles.png","image"]
+:HL["/images/b-day/widget.png","image"]
+:HL["/images/b-day/iphone-today.png","image"]
+:HL["/images/b-day/watch.png","image"]
+:HL["/apps/b-day/icon.webp","image"]
+:HL["/apps/renewise/icon.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"tnQMc5muOGRKJGc__QRUa"}

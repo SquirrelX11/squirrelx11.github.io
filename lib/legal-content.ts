@@ -22,10 +22,10 @@ export function fillTokens(md: string): string {
 export const legalMeta = {
   // Publication date provided by the owner.
   effectiveDate: "June 22, 2026",
-  lastUpdated: "June 22, 2026"
+  lastUpdated: "July 29, 2026"
 } as const;
 
-export const privacyBody = `B-DAY is a **local-first** birthday organizer for iPhone and Apple Watch. Your information is stored **on your device**, and — only if you choose — in **your own private iCloud**. We do not operate any server, we do not use analytics, advertising, or tracking, and we include no third-party SDKs. We never receive your birthdays, contacts, photos, or notes. This Privacy Policy is provided by Aleksandr Pavlov.
+export const privacyBody = `B-DAY is a **local-first** birthday organizer for iPhone and Apple Watch. Your information is stored **on your device**, and — only if you choose — in **your own private iCloud**. We do not use analytics, advertising, or tracking, and we include no third-party SDKs. We never receive your birthdays, contacts, photos, or notes. There is exactly one exception, and only if you choose to use it: **greeting cards you send as a link** (see section 13). Nothing else ever leaves your device. This Privacy Policy is provided by Aleksandr Pavlov.
 
 ## 1. Who this applies to
 This policy covers the B-DAY iPhone app, its widgets, and the Apple Watch app. Information about other people that you add (names, birthdays, etc.) is entered by you; you are responsible for having a reasonable basis to store it.
@@ -63,28 +63,46 @@ The app includes no third-party SDKs. It uses Apple services only: iCloud/CloudK
 ## 12. Voice search (optional)
 If you use voice search, the app uses the microphone and Apple's Speech Recognition to turn speech into text. Depending on your device and language, Apple may process the audio to recognize it. The recognized text is used only to fill the search field; it is not stored or sent to us.
 
-## 13. Data sharing
-We do not sell or share your personal data. Your data stays on your device and, if you enable sync, in your own iCloud. Apple may process data when you use iCloud, the App Store, or Speech, under Apple's terms.
+## 13. Greeting cards sent as a link (optional)
+This is the only feature that sends anything to a server we run.
 
-## 14. Retention and deletion
+If you choose **Send as a card**, the greeting you wrote is sent to our service so that the person you send it to can open it in a browser. What we receive: the heading, the lines of the greeting, the signature, the sender name you type, the language, and — if you set one — the moment the card should unlock. We do **not** receive the recipient's name, birthday, phone number, email, photo, notes, or anything else from your list.
+
+The card address is 12 randomly generated characters (for example \`/g/K7XQ2M9TVB4P\`). It is never derived from anybody's name, so it cannot be guessed from one.
+
+Photos, audio, and files cannot be attached to a card at all — the service accepts text only, and any web links inside that text are removed.
+
+A card is deleted automatically **14 days after it was last opened** (the countdown starts when the card unlocks, not when it was created). You can delete it earlier at any time from **Settings → Greetings → My cards**; the link stops working immediately.
+
+The service runs on Cloudflare (Pages, D1). No account is required and we do not store an identifier for you: to check that your purchase is valid, we keep only a one-way hash of the Apple transaction, which cannot be turned back into your Apple ID.
+
+If you never use this feature, nothing is ever sent to our server.
+
+## 14. The recipient's side (microphone)
+The card page asks the recipient's browser for microphone access so the candles can be blown out. The audio is analysed **inside their browser only**, is never recorded, and never reaches us or you. Blowing can be skipped entirely with a tap. The app itself never asks for microphone access for this feature.
+
+## 17. Data sharing
+We do not sell or share your personal data. Your data stays on your device and, if you enable sync, in your own iCloud — except for a greeting card you deliberately send as a link (section 13). Apple may process data when you use iCloud, the App Store, or Speech, under Apple's terms.
+
+## 16. Retention and deletion
 Your data remains as long as it is on your device or, if sync is enabled, in your iCloud. You can delete a single person, delete all local data, or delete local and iCloud data from within the app. Deleting local data removes only the on-device copy. **Delete local and iCloud data** permanently removes your data from the device and from your private iCloud database — this works whether or not iCloud Sync is turned on, but it requires that you are signed in to iCloud and connected to the internet, and the app confirms completion only after the iCloud deletion succeeds (if it can't reach iCloud, your local data is kept so you can try again). Uninstalling the app removes on-device data but does not delete data stored in your iCloud.
 
-## 15. Export / backup
+## 17. Export / backup
 You can export your data to a JSON file and share it through iOS. Once you share or save it, that file is under your control; manage or delete it like any other file.
 
-## 16. Security
+## 18. Security
 We rely on iOS and iCloud security and your device passcode. No method of storage or transmission is completely secure, so we cannot guarantee absolute security.
 
-## 17. Children
+## 19. Children
 B-DAY is a general-purpose organizer. It can store information you enter about other people, which may include family members. Only add information you have a reasonable basis to store.
 
-## 18. International processing
+## 20. International processing
 If you enable iCloud or use Apple services, Apple may process data through its infrastructure in accordance with Apple's terms and privacy practices. Feature availability can vary by region and Apple account.
 
-## 19. Changes
+## 21. Changes
 We may update this policy when the app or legal requirements change. The "Last updated" date reflects the latest revision.
 
-## 20. Contact
+## 22. Contact
 Questions about privacy: **[SUPPORT EMAIL]**.`;
 
 export const termsBody = `These Terms of Use apply to the B-DAY app and this website, provided by Aleksandr Pavlov. The app is licensed, not sold, and is also subject to Apple's Standard End User License Agreement (EULA). These Terms supplement, and do not replace, the Apple Standard EULA.

@@ -52,18 +52,18 @@ export const apps: AppDefinition[] = [
     href: "/apps/renewise"
   },
   {
-    slug: "nook",
-    name: "Nook",
+    slug: "nesti",
+    name: "Nesti",
     tagline: "Your web, the way you left it.",
     subtitle: "Visual speed dial for Safari",
     description:
       "A Safari start page of large visual cards: collections, tab groups and a flexible grid — local-first, with optional iCloud sync.",
     platforms: ["Mac", "iPhone", "Safari"],
-    icon: "/apps/nook/icon.png",
-    heroImage: "/apps/nook/icon.png",
+    icon: "/apps/nesti/icon.png",
+    heroImage: "/apps/nesti/icon.png",
     status: "coming-soon",
     featured: false,
-    href: "/apps/nook"
+    href: "/apps/nesti"
   }
   // Future apps go here — one entry, no layout changes required.
 ];

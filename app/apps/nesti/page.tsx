@@ -6,10 +6,10 @@ import { GlassSurface } from "@/components/GlassSurface";
 import { Icon, type IconName } from "@/components/Icon";
 
 export const metadata: Metadata = {
-  title: "Nook — Visual Speed Dial for Safari on Mac and iPhone",
+  title: "Nesti — Visual Speed Dial for Safari on Mac and iPhone",
   description:
     "A Safari start page of large visual cards: collections, tab groups, a flexible grid and wallpapers — local-first, with optional private iCloud sync.",
-  alternates: { canonical: "/apps/nook" }
+  alternates: { canonical: "/apps/nesti" }
 };
 
 const platformIcon: Record<string, IconName> = {
@@ -22,12 +22,12 @@ const features = [
   {
     icon: "widgets" as IconName,
     title: "Cards, not a list of links",
-    text: "Every site is a large visual card with its own preview and icon. Nook draws a cover of its own when a site offers none."
+    text: "Every site is a large visual card with its own preview and icon. Nesti draws a cover of its own when a site offers none."
   },
   {
     icon: "devices" as IconName,
     title: "A grid that fits your screen",
-    text: "1 to 3 columns on iPhone, 2 to 6 on Mac, with card size set separately. Narrow the window and Nook adapts, then returns to your choice."
+    text: "1 to 3 columns on iPhone, 2 to 6 on Mac, with card size set separately. Narrow the window and Nesti adapts, then returns to your choice."
   },
   {
     icon: "document" as IconName,
@@ -37,21 +37,21 @@ const features = [
   {
     icon: "history" as IconName,
     title: "Tab groups",
-    text: "Save the tabs you have open as a named, coloured group and reopen the whole set later. Safari gives extensions no tab groups, so Nook keeps its own."
+    text: "Save the tabs you have open as a named, coloured group and reopen the whole set later. Safari gives extensions no tab groups, so Nesti keeps its own."
   },
   {
     icon: "sparkles" as IconName,
     title: "Import what you already have",
-    text: "Nook offers to read your open tabs on first run and sorts them into collections for you. Nothing preinstalled, nothing to delete."
+    text: "Nesti offers to read your open tabs on first run and sorts them into collections for you. Nothing preinstalled, nothing to delete."
   },
   {
     icon: "cloud" as IconName,
     title: "Your Mac and your iPhone",
-    text: "Optional sync through your own private iCloud keeps both start pages the same. Off by default; Nook works fully without it."
+    text: "Optional sync through your own private iCloud keeps both start pages the same. Off by default; Nesti works fully without it."
   }
 ];
 
-// Only claims the shipping build actually keeps — see lib/nook-legal.ts.
+// Only claims the shipping build actually keeps — see lib/nesti-legal.ts.
 const privacy = [
   { icon: "lock" as IconName, text: "No accounts" },
   { icon: "iphone" as IconName, text: "Local-first storage" },
@@ -61,23 +61,23 @@ const privacy = [
 ];
 
 const resources = [
-  { icon: "shield" as IconName, label: "Privacy Policy", href: routes.nookPrivacy },
-  { icon: "document" as IconName, label: "Terms of Use", href: routes.nookTerms },
-  { icon: "support" as IconName, label: "Support", href: routes.nookSupport }
+  { icon: "shield" as IconName, label: "Privacy Policy", href: routes.nestiPrivacy },
+  { icon: "document" as IconName, label: "Terms of Use", href: routes.nestiTerms },
+  { icon: "support" as IconName, label: "Support", href: routes.nestiSupport }
 ];
 
-export default function NookPage() {
-  const app = appBySlug("nook")!;
+export default function NestiPage() {
+  const app = appBySlug("nesti")!;
 
   return (
     <main id="main" className="container bday-page">
-      <section className="section" aria-labelledby="nook-title">
+      <section className="section" aria-labelledby="nesti-title">
         <div className="reveal" style={{ textAlign: "center" }}>
           <span className="app-icon" aria-hidden="true">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={app.icon} alt="" className="app-icon-img" />
           </span>
-          <h1 id="nook-title" style={{ marginTop: 14 }}>Nook</h1>
+          <h1 id="nesti-title" style={{ marginTop: 14 }}>Nesti</h1>
           <p className="bday-hero-tagline">Your web, the way you left it.</p>
           <p className="bday-hero-sub">
             A visual speed dial that replaces Safari&rsquo;s new tab page — on Mac and on
@@ -100,10 +100,10 @@ export default function NookPage() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="nook-features-title">
+      <section className="section" aria-labelledby="nesti-features-title">
         <div className="section-head">
           <p className="eyebrow">Features</p>
-          <h2 id="nook-features-title">The sites you actually use, one tap away.</h2>
+          <h2 id="nesti-features-title">The sites you actually use, one tap away.</h2>
         </div>
         <div className="bday-feature-grid">
           {features.map((f) => (
@@ -118,10 +118,10 @@ export default function NookPage() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="nook-platform-title">
+      <section className="section" aria-labelledby="nesti-platform-title">
         <div className="section-head">
           <p className="eyebrow">Honest about the platform</p>
-          <h2 id="nook-platform-title">What each device can do.</h2>
+          <h2 id="nesti-platform-title">What each device can do.</h2>
         </div>
         <div className="bday-feature-grid">
           <GlassSurface as="article" className="feature-card glass-feature">
@@ -130,7 +130,7 @@ export default function NookPage() {
             </span>
             <h3>On Mac</h3>
             <p>
-              Everything, plus page snapshots: the Nook app renders a saved page
+              Everything, plus page snapshots: the Nesti app renders a saved page
               off-screen and uses that image as its card. Up to six columns, a full
               settings window and drag-and-drop across collections.
             </p>
@@ -149,14 +149,14 @@ export default function NookPage() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="nook-privacy-title">
+      <section className="section" aria-labelledby="nesti-privacy-title">
         <GlassSurface
           className="bday-cta"
           tone="soft"
           style={{ alignItems: "flex-start", flexDirection: "column" }}
         >
           <p className="eyebrow">Privacy</p>
-          <h2 id="nook-privacy-title">Nothing leaves your device.</h2>
+          <h2 id="nesti-privacy-title">Nothing leaves your device.</h2>
           <div className="privacy-list">
             {privacy.map((p) => (
               <span className="privacy-pill" key={p.text}>
@@ -165,17 +165,17 @@ export default function NookPage() {
               </span>
             ))}
           </div>
-          <Link href={routes.nookPrivacy} className="app-card-cta" style={{ marginTop: 18 }}>
-            Read the Nook Privacy Policy
+          <Link href={routes.nestiPrivacy} className="app-card-cta" style={{ marginTop: 18 }}>
+            Read the Nesti Privacy Policy
             <Icon name="arrow" />
           </Link>
         </GlassSurface>
       </section>
 
-      <section className="section" aria-labelledby="nook-resources-title">
+      <section className="section" aria-labelledby="nesti-resources-title">
         <div className="section-head">
-          <p className="eyebrow">Nook Resources</p>
-          <h2 id="nook-resources-title">Help &amp; legal.</h2>
+          <p className="eyebrow">Nesti Resources</p>
+          <h2 id="nesti-resources-title">Help &amp; legal.</h2>
         </div>
         <div className="resource-grid">
           {resources.map((r) => (

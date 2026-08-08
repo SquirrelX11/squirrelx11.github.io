@@ -17,10 +17,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/apps/renewise/privacy-choices"
   ];
 
-  // Nook legal sub-pages (indexable).
-  const nookRoutes = ["/apps/nook/privacy", "/apps/nook/terms", "/apps/nook/support"];
+  // Nesti legal sub-pages (indexable).
+  const nestiRoutes = ["/apps/nesti/privacy", "/apps/nesti/terms", "/apps/nesti/support"];
 
-  return [...staticRoutes, ...appRoutes, ...soonRoutes, ...nookRoutes].map((path) => ({
+  return [...staticRoutes, ...appRoutes, ...soonRoutes, ...nestiRoutes].map((path) => ({
     url: `${base}${path}`,
     changeFrequency: "monthly",
     priority: path === "/" ? 1 : 0.6

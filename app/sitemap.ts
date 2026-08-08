@@ -17,7 +17,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/apps/renewise/privacy-choices"
   ];
 
-  return [...staticRoutes, ...appRoutes, ...soonRoutes].map((path) => ({
+  // Nook legal sub-pages (indexable).
+  const nookRoutes = ["/apps/nook/privacy", "/apps/nook/terms", "/apps/nook/support"];
+
+  return [...staticRoutes, ...appRoutes, ...soonRoutes, ...nookRoutes].map((path) => ({
     url: `${base}${path}`,
     changeFrequency: "monthly",
     priority: path === "/" ? 1 : 0.6

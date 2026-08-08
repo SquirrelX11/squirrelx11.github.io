@@ -5,7 +5,7 @@
  * /public/apps/<slug>/ — the homepage and cards are config-driven.
  */
 
-export type AppPlatform = "iPhone" | "Apple Watch" | "Widgets" | "iPad" | "Mac";
+export type AppPlatform = "iPhone" | "Apple Watch" | "Widgets" | "iPad" | "Mac" | "Safari";
 export type AppStatus = "available" | "coming-soon" | "in-development";
 
 export interface AppDefinition {
@@ -50,6 +50,20 @@ export const apps: AppDefinition[] = [
     status: "coming-soon",
     featured: false,
     href: "/apps/renewise"
+  },
+  {
+    slug: "nook",
+    name: "Nook",
+    tagline: "Your web, the way you left it.",
+    subtitle: "Visual speed dial for Safari",
+    description:
+      "A Safari start page of large visual cards: collections, tab groups and a flexible grid — local-first, with optional iCloud sync.",
+    platforms: ["Mac", "iPhone", "Safari"],
+    icon: "/apps/nook/icon.png",
+    heroImage: "/apps/nook/icon.png",
+    status: "coming-soon",
+    featured: false,
+    href: "/apps/nook"
   }
   // Future apps go here — one entry, no layout changes required.
 ];

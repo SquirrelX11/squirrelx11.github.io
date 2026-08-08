@@ -64,5 +64,10 @@ export const routes = {
   soonTerms: "/apps/renewise/terms",
   soonSupport: "/apps/renewise/support",
   soonFaq: "/apps/renewise/faq",
-  soonPrivacyChoices: "/apps/renewise/privacy-choices"
+  soonPrivacyChoices: "/apps/renewise/privacy-choices",
+  // App-specific (Nook) routes — canonical for the extension and both apps.
+  nook: "/apps/nook",
+  nookPrivacy: "/apps/nook/privacy",
+  nookTerms: "/apps/nook/terms",
+  nookSupport: "/apps/nook/support"
 } as const;

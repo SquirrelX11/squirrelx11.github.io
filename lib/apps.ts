@@ -34,7 +34,7 @@ export const apps: AppDefinition[] = [
     platforms: ["iPhone", "Apple Watch", "Widgets"],
     icon: "/apps/b-day/icon.webp",
     heroImage: "/images/b-day/iphone-today.webp",
-    status: "coming-soon",
+    status: "available",
     featured: true,
     href: "/apps/b-day"
   },
@@ -47,7 +47,7 @@ export const apps: AppDefinition[] = [
     platforms: ["iPhone", "Apple Watch", "Widgets"],
     icon: "/apps/renewise/icon.png",
     heroImage: "/apps/renewise/icon.png",
-    status: "coming-soon",
+    status: "available",
     featured: false,
     href: "/apps/renewise"
   },

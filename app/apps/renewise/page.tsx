@@ -78,11 +78,16 @@ export default function SoonPage() {
             ))}
           </div>
           <div className="hero-actions" style={{ marginTop: 26, justifyContent: "center" }}>
-            {/* App releases Aug 8 — swap this span for a real App Store link then:
-                <a className="availability-btn" href="https://apps.apple.com/app/id6787124838">Download on the App Store</a> */}
-            <span className="availability-btn" aria-disabled="true">
-              Coming soon on the App Store
-            </span>
+            <a
+              className="store-badge-link"
+              href="https://apps.apple.com/app/id6787124838"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download Renewise on the App Store"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="store-badge" src="/apps/renewise/appstore-badge.png" alt="Download on the App Store" />
+            </a>
           </div>
         </div>
       </section>

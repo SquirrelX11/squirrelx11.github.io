@@ -1521,6 +1521,21 @@ main {
   background: rgba(255, 255, 255, 0.04);
 }
 
+/* Clickable "Download on the App Store" image badge (per-app artwork). */
+.store-badge-link {
+  display: inline-flex;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+.store-badge-link:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+.store-badge {
+  height: 58px;
+  width: auto;
+  display: block;
+}
+
 /* B-DAY features: 4 compact cards */
 .bday-feature-grid {
   display: grid;

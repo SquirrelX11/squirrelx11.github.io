@@ -527,6 +527,20 @@ main {
   border-radius: var(--radius-lg);
   transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
+/* Tappable body (links to the app page); keeps the card's internal rhythm since the
+   content moved off the card root so the App Store badge can be its own link. */
+.app-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1 1 auto;
+  color: inherit;
+  text-decoration: none;
+}
+/* Smaller badge for the app cards' footer. */
+.store-badge-sm {
+  height: 40px;
+}
 .app-card:hover {
   transform: translateY(-4px);
   border-color: var(--glass-border-violet);

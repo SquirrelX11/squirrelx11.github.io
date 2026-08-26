@@ -23,6 +23,8 @@ export interface AppDefinition {
   status: AppStatus;
   featured: boolean;
   href: string;
+  /** Live App Store product URL. Set once published; drives the download badge. */
+  appStoreUrl?: string;
 }
 
 export const apps: AppDefinition[] = [
@@ -36,7 +38,8 @@ export const apps: AppDefinition[] = [
     heroImage: "/images/b-day/iphone-today.webp",
     status: "available",
     featured: true,
-    href: "/apps/b-day"
+    href: "/apps/b-day",
+    appStoreUrl: "https://apps.apple.com/us/app/b-day-birthday-organizer/id6785263792"
   },
   {
     slug: "soon",
@@ -49,7 +52,8 @@ export const apps: AppDefinition[] = [
     heroImage: "/apps/renewise/icon.png",
     status: "available",
     featured: false,
-    href: "/apps/renewise"
+    href: "/apps/renewise",
+    appStoreUrl: "https://apps.apple.com/app/id6787124838"
   },
   {
     slug: "nesti",

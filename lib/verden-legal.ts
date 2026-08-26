@@ -34,7 +34,7 @@ All of it is encrypted on the device with your Vault Encryption Key using AES-25
 
 If you turn on iCloud Sync, the same encrypted records are stored in **your own private iCloud database** under your Apple ID. Apple receives ciphertext, opaque identifiers, record sizes and timestamps — never content. We have no access to that database at all.
 
-A few things are deliberately kept outside the vault because they contain nothing of yours: which categories Travel Mode hides on this device, recovery-drill history (a scenario name and a count), and the cache of service logos.
+A few things are deliberately kept outside the vault because they contain nothing of yours: which categories Travel Mode hides on this device, the history of your last twenty recovery drills (the scenario, when you ran it and four counts — never an account or a label), and the cache of service logos.
 
 ## 3. What is never stored anywhere
 Your **Master Recovery Phrase** is generated on the device, shown to you once, and stored nowhere — not on the device, not in iCloud, not with us. The same is true of the key that opens a **Recovery Capsule** you export. If you lose them, there is no escrow and no reset. That is the point of them, and it is stated in the app before you are asked to write one down.
@@ -56,14 +56,16 @@ Verden cannot read Apple Passwords, list the passkeys on your device, enumerate 
 Verden also has no way of knowing that anything has happened to you. The digital legacy plan is a document you prepare and hand over deliberately. Nothing is released on a timer, on a signal, or on inactivity.
 
 ## 6. Passwords, compared on the device
-Passwords saved in Verden are compared with each other **on the device**, by fingerprint, so the app can tell you a password is reused. Those fingerprints are never written to disk, never synchronised, and cannot be reversed into a password. No breach database is consulted, because Verden has no network path that could reach one.
+Passwords saved in Verden are compared with each other **on the device**, by fingerprint, so the app can tell you a password is reused. Those fingerprints exist only in memory while the comparison runs: they are never written to disk, never synchronised and never sent anywhere. We will not tell you they are irreversible — an unsalted hash of a weak password is not — which is exactly why they are never stored. The finding names the affected services, never the password. No breach database is consulted; Verden has no network path that could reach one.
 
 ## 7. Service logos (optional, switchable)
 To show a recognisable logo next to a service, Verden can ask **our own logo cache** — a Cloudflare Worker we operate — for a logo by domain. That cache fetches from **Brandfetch** once and keeps the result for everyone, so Brandfetch is not contacted per user. If it has nothing, the app falls back to a site's favicon via **DuckDuckGo**.
 
 The request carries **only the service's public domain** — for example \`netflix.com\`. No account data, no username, no identifier, nothing you typed into a record. As with any request to any website, our cache and those fallbacks necessarily see the **IP address** it came from; there is no account to attach it to and no profile is built.
 
-Logos are cached on your device, so a service is normally requested once. **Privacy & Security → Load service logos** turns this off entirely; monograms are drawn instead. No logo request is ever made while a secret is revealed on screen.
+Stated plainly, because it is the honest cost of the feature: a logo request tells that host **which service one of your records concerns**. Each domain is asked for at most once and then cached on your device, so it is not a running commentary on what you open — but it is not nothing either, and you should know it before deciding.
+
+**Privacy & Security → Load service logos** turns this off entirely and clears the cache. Monograms are drawn instead, and the app is otherwise unchanged.
 
 ## 8. Network connections
 Apart from the logo cache above, Verden makes exactly one kind of outbound connection: **iCloud (CloudKit)**, and only when you have turned sync on. It carries ciphertext, opaque identifiers and timestamps, and is governed by Apple's privacy policy.
@@ -152,13 +154,25 @@ The feature is off until you turn it on, and turning it off deletes both halves.
 **Where this stops:** if you are shown a look-alike domain and pick a credential for it anyway, autofill will fill it. The system reports the requesting domain and Verden shows it; recognising it is a judgement you make.
 
 ## 6. On the screen
-The app relocks on a timeout you choose and always after launch. Secrets stay concealed even inside an unlocked session; revealing, copying, exporting or deleting each require a fresh check. A revealed value re-conceals itself after 30 seconds, and the clipboard is cleared on a timer you set.
+The app relocks on a timeout you choose and always after launch. Secrets stay concealed even inside an unlocked session; revealing, copying, exporting or deleting each require a fresh check. A revealed value re-conceals itself after 30 seconds, and the clipboard is cleared on the interval you choose — thirty seconds, a minute, two minutes, or never, if you decide that is what you want.
 
-While the app is not in the foreground it is covered, so the app-switcher snapshot holds nothing. While iOS reports active screen recording, views carrying secrets hide themselves.
+While the app is not in the foreground it is covered, so the app-switcher snapshot holds nothing — a setting that is on unless you turn it off. While iOS reports active screen recording, views carrying secrets hide themselves.
 
 **Where this stops:** iOS gives an app no way to prevent a screenshot, and no way at all to stop a camera pointed at the screen. Verden does not claim otherwise.
 
-## 7. What Verden will not claim
+## 7. What leaves the device
+Two things, and only if you allow them.
+
+**iCloud**, when sync is on: ciphertext, opaque identifiers and timestamps, over Apple's own transport. Even a successful attack on that transport yields ciphertext, because the payload was already encrypted before it was handed over.
+
+**A logo request**, when *Load service logos* is on: one domain, to a cache we run — and, if that cache has nothing, to DuckDuckGo's favicon service. No account data, no identifier, no vault content. It does tell whichever host answers which service a record of yours concerns, which is why the switch exists and why the Privacy Policy says so rather than burying it.
+
+Nothing else. There is no telemetry, no crash reporter, no attribution and no advertising identifier — and no third-party SDK of any kind is linked into the app, so there is no vendor who could add one in an update we did not read. The whole dependency list is Apple's own frameworks.
+
+## 8. What this design does not survive
+A device with malware running as root, or an unlocked device in someone else's hands with your face or passcode. Once the vault is unlocked, its contents are readable by definition — that is what unlocking means. Verden shortens the window with a relock timeout, concealed values and a fresh check before each reveal, but it cannot defend a device that is already lost while open.
+
+## 9. What Verden will not claim
 - It cannot read Apple Passwords, list your passkeys, scan your device for accounts, or check with a service whether two-factor is on. Everything in the Readiness score comes from what you entered or confirmed.
 - It cannot prevent screenshots.
 - It cannot detect that something has happened to you. The digital legacy plan is handed over deliberately; nothing releases on a timer.
@@ -166,14 +180,16 @@ While the app is not in the foreground it is covered, so the app-switcher snapsh
 - It cannot recover a lost Master Recovery Phrase. There is no escrow, no backdoor and no support procedure that can substitute for it.
 - It holds seed phrases and private keys — behind an explicit tap, never in a form that opens by default. It is not a hardware wallet: a phrase kept on a phone is only as safe as the phone.
 
-## 8. Reporting something
+## 10. Reporting something
 If you believe you have found a vulnerability, write to [SUPPORT EMAIL] with enough detail to reproduce it. Please give us a reasonable period to fix it before publishing. There is no bounty programme; there is a developer who will read it and answer.
 `;
 
 export const verdenTermsBody = `These Terms of Use govern your use of the Verden app for iPhone and iPad, provided by Aleksandr Pavlov (Squirrel Apps), an independent developer.
 
-## 1. Acceptance
+## 1. Acceptance and licence
 By downloading or using Verden, you agree to these Terms. If you do not agree, do not use the app.
+
+You get a personal, non-transferable licence to use Verden on Apple devices you own or control, as permitted by the App Store Terms of Service. You may not resell it, rent it, or redistribute it as your own.
 
 ## 2. What Verden is
 Verden is a tool for recording, encrypting and organising the information you would need to regain access to your own accounts. It stores what you enter. It does not act on your behalf, does not contact any service for you, and does not verify anything with anyone.
@@ -194,7 +210,11 @@ Everything you put into Verden remains yours. We claim no rights over it and, in
 You are responsible for what you record. If you store information about other people — a recovery contact, a family member's details — you are responsible for having a reasonable basis to do so.
 
 ## 6. Purchases and subscriptions
-Verden Pro is sold through the App Store. Subscriptions renew automatically unless cancelled at least 24 hours before the period ends; you manage and cancel them in your Apple ID settings, not in the app. Any free trial ends when the subscription starts. Refunds are handled by Apple under its own policy.
+Verden Pro is sold through the App Store, as a monthly subscription, a yearly subscription, or a one-time lifetime purchase. Prices are shown in the app in your own currency before you buy.
+
+A subscription renews automatically unless it is cancelled at least 24 hours before the period ends. You manage and cancel it in your Apple ID settings, not in the app; cancelling stops the next renewal and leaves the current period running. Where a free trial is offered, it converts into a paid period unless cancelled before it ends. A lifetime purchase does not renew and is not a subscription.
+
+Apple takes the payment and issues refunds under the App Store Terms of Service. We never see your card details and cannot refund a purchase ourselves.
 
 Features that concern regaining access — your Master Recovery Phrase, your backup codes and exporting an encrypted archive — are never behind the paywall and will not be moved behind it.
 
@@ -209,14 +229,25 @@ To the fullest extent the law allows, Verden is provided **"as is"**, without wa
 
 To the fullest extent the law allows, our total liability arising from your use of Verden is limited to the amount you paid for it in the twelve months before the claim. Nothing here limits liability that cannot be limited by law.
 
-## 10. Changes
+## 10. Termination
+The licence ends if you stop complying with these Terms or delete the app. Sections 4, 9 and 12 survive.
+
+Deleting the app removes its local data. It does not cancel a subscription — that is done in your Apple ID settings.
+
+## 11. Changes
 We may revise these Terms. The date above changes when we do, and continuing to use the app means accepting the revision.
 
-## 11. Contact
+## 12. Governing law
+These Terms are governed by the laws applicable at the developer's place of residence, without limiting any mandatory consumer rights you have where you live.
+
+## 13. Apple
+Apple is not a party to these Terms and has no obligation to provide support for the app. Apple and its subsidiaries are third-party beneficiaries of these Terms and may enforce them against you.
+
+## 14. Contact
 [SUPPORT EMAIL]
 `;
 
-export const verdenSupportBody = `Verden is made by one developer. Write with a question and a person reads it — usually within a couple of days.
+export const verdenSupportBody = `Verden is made by one developer. Write with a question and a person reads it — usually within a couple of days, though that is an intention rather than a guarantee.
 
 **[SUPPORT EMAIL]**
 
@@ -224,7 +255,7 @@ export const verdenSupportBody = `Verden is made by one developer. Write with a 
 A few answers that come up most often.
 
 **I lost my Master Recovery Phrase. Can you reset it?**
-No — and no one can. It is generated on your device, shown once and stored nowhere: not on the device, not in iCloud, not with us. There is no escrow and no support procedure that substitutes for it. If you still have access to your vault on a device, open *Plans → Master Recovery Phrase* and write down a fresh one now.
+No — and no one can. It is generated on your device, shown once and stored nowhere: not on the device, not in iCloud, not with us. There is no escrow and no support procedure that substitutes for it. If you still have access to your vault on a device, open *Plans → Recovery Phrase* and write down a fresh one now.
 
 **Where do I find the passwords AutoFill can offer?**
 *Settings → Password AutoFill → the counter*. It lists every account and says whether a password is saved for it; tapping one without a password opens it so you can add one. It never shows the passwords themselves.
@@ -232,14 +263,16 @@ No — and no one can. It is generated on your device, shown once and stored now
 **AutoFill does not appear above my keyboard.**
 Two switches have to be on, and the second is easy to miss: *Verden → Settings → Password AutoFill*, then **Settings → General → AutoFill & Passwords → Verden**. Without the second, iOS never asks the extension for anything.
 
-**The counter says 0 accounts.**
+**The counter says 0 of 25 accounts.**
 That is not a fault. Verden is built for recording *where* a password lives at least as often as the password itself, so an account with no password saved is a normal account. Add one in the account's Security section and the counter moves.
 
 **Does Verden check my accounts?**
 No. It cannot read Apple Passwords, list your passkeys, or ask a service whether your two-factor is on. Everything it shows is built from what you entered or confirmed, and it says so on the screen where it shows it.
 
 **Is my data on your server?**
-There is no such server. Your vault is encrypted on your device with a key we do not have, and — only if you switch sync on — stored in your own private iCloud, still encrypted. The one service we run is a cache that returns brand logos for public domains; it never sees anything of yours.
+No, and there is nowhere for it to go: your vault is encrypted on your device with a key we do not have, and — only if you switch sync on — stored in your own private iCloud, still encrypted. We have no user database and no account system.
+
+We do run one thing, and it is fair to know about it: a cache that returns a brand logo for a public domain, so services look like themselves in the app. It receives a domain such as \`netflix.com\` — never your records, your usernames or your passwords — and *Privacy & Security → Load service logos* turns it off.
 
 **I deleted the app. Is my data gone?**
 The local copy is. If sync was on, the encrypted copy is still in your own iCloud; remove it in **Settings → Apple ID → iCloud → Manage Storage**, or reinstall and use *Delete all vault data*.

@@ -69,5 +69,12 @@ export const routes = {
   nesti: "/apps/nesti",
   nestiPrivacy: "/apps/nesti/privacy",
   nestiTerms: "/apps/nesti/terms",
-  nestiSupport: "/apps/nesti/support"
+  nestiSupport: "/apps/nesti/support",
+  // App-specific (Verden) routes. The app itself links to these from
+  // Settings → Help, so their paths are part of a shipped build.
+  verden: "/apps/verden",
+  verdenPrivacy: "/apps/verden/privacy",
+  verdenSecurity: "/apps/verden/security",
+  verdenTerms: "/apps/verden/terms",
+  verdenSupport: "/apps/verden/support"
 } as const;

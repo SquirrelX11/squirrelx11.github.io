@@ -15,12 +15,15 @@ export function LegalLayout({
   title,
   body,
   showDates = true,
+  showDraftNote = true,
   meta = legalMeta
 }: {
   eyebrow: string;
   title: string;
   body: string;
   showDates?: boolean;
+  /** A help page is not a legal document; it does not carry the review notice. */
+  showDraftNote?: boolean;
   meta?: { effectiveDate: string; lastUpdated: string };
 }) {
   const filled = fillTokens(body);
@@ -36,12 +39,14 @@ export function LegalLayout({
         </p>
       )}
 
-      <GlassSurface tone="violet" className="legal-draft-note">
-        <p>
-          This document is based on a technical audit of the app and is pending a final
-          professional legal review before being considered definitive.
-        </p>
-      </GlassSurface>
+      {showDraftNote && (
+        <GlassSurface tone="violet" className="legal-draft-note">
+          <p>
+            This document is based on a technical audit of the app and is pending a final
+            professional legal review before being considered definitive.
+          </p>
+        </GlassSurface>
+      )}
 
       <div className="legal-grid">
         {toc.length > 0 && (

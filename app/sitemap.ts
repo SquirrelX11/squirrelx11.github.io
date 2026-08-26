@@ -20,7 +20,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Nesti legal sub-pages (indexable).
   const nestiRoutes = ["/apps/nesti/privacy", "/apps/nesti/terms", "/apps/nesti/support"];
 
-  return [...staticRoutes, ...appRoutes, ...soonRoutes, ...nestiRoutes].map((path) => ({
+  // Verden legal sub-pages (indexable). The app links to these directly.
+  const verdenRoutes = [
+    "/apps/verden/privacy",
+    "/apps/verden/security",
+    "/apps/verden/terms",
+    "/apps/verden/support"
+  ];
+
+  return [...staticRoutes, ...appRoutes, ...soonRoutes, ...nestiRoutes, ...verdenRoutes].map((path) => ({
     url: `${base}${path}`,
     changeFrequency: "monthly",
     priority: path === "/" ? 1 : 0.6

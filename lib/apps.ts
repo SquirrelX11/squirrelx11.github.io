@@ -64,6 +64,20 @@ export const apps: AppDefinition[] = [
     status: "coming-soon",
     featured: false,
     href: "/apps/nesti"
+  },
+  {
+    slug: "verden",
+    name: "Verden",
+    tagline: "Be ready before you lose access.",
+    subtitle: "Passwords, keys & recovery",
+    description:
+      "An encrypted vault for the things that get you back into your accounts: recovery phrases, backup codes, keys, and the plan for the day the phone is gone.",
+    platforms: ["iPhone", "iPad"],
+    icon: "/apps/verden/icon.png",
+    heroImage: "/apps/verden/icon.png",
+    status: "coming-soon",
+    featured: false,
+    href: "/apps/verden"
   }
   // Future apps go here — one entry, no layout changes required.
 ];

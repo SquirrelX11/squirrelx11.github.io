@@ -46,6 +46,29 @@ const features = [
   }
 ];
 
+const shots = [
+  {
+    src: "/apps/chippy/shots/switches.webp",
+    alt: "The Switches tab: eleven sound profiles laid out as cards, six mechanical switches above and five typewriters below.",
+    caption: "Eleven profiles, each with its own colour, waveform and description."
+  },
+  {
+    src: "/apps/chippy/shots/keyboard.webp",
+    alt: "The Keyboard tab: a live on-screen keyboard lighting up as keys are pressed, with typing speed and stroke counts.",
+    caption: "A live board shows exactly what Chippy hears — and nothing else."
+  },
+  {
+    src: "/apps/chippy/shots/machine.webp",
+    alt: "The Machine and Voicing panels: switches for the carriage return and margin bell, and sliders for volume, release, pitch and stereo width.",
+    caption: "Carriage return and margin bell switch off; four sliders shape the rest."
+  },
+  {
+    src: "/apps/chippy/shots/general.webp",
+    alt: "The General tab: switches for typing sounds, key release, modifiers and mouse clicks, with the accessibility and startup section below.",
+    caption: "Every voice can be turned off on its own, mouse clicks included."
+  }
+];
+
 const privacy = [
   { icon: "lock" as IconName, text: "No accounts" },
   { icon: "shield" as IconName, text: "No analytics, ads or trackers" },
@@ -85,6 +108,24 @@ export default function ChippyPage() {
           own sounds — nothing to install to find out whether you like them.
         </p>
         <ChippySoundTest />
+      </section>
+
+      <section className="section" aria-labelledby="chippy-shots">
+        <p className="eyebrow">A closer look</p>
+        <h2 id="chippy-shots">Small app, quiet about it</h2>
+        <div className="mac-shots" role="list">
+          {shots.map((shot) => (
+            <div className="mac-shot" role="listitem" key={shot.src}>
+              <figure>
+                <span className="mac-frame" style={{ display: "block" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={shot.src} alt={shot.alt} loading="lazy" />
+                </span>
+                <figcaption>{shot.caption}</figcaption>
+              </figure>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="section" aria-labelledby="chippy-features">

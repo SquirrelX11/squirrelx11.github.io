@@ -2339,3 +2339,50 @@ main {
 @media (min-width: 1040px) {
   .rw-shots { justify-content: center; }
 }
+
+
+/* Mac window gallery (Chippy). The phone gallery above is 216px wide, which is
+   right for a portrait iPhone shot and far too narrow for a landscape window. */
+.mac-shots {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding: 8px 2px 22px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.mac-shots::-webkit-scrollbar { height: 6px; }
+.mac-shots::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.14); border-radius: 3px; }
+.mac-shot {
+  flex: 0 0 auto;
+  width: min(640px, 84vw);
+  scroll-snap-align: center;
+}
+.mac-shot figure { margin: 0; }
+.mac-shot .mac-frame {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  box-shadow: 0 28px 70px -26px rgba(0,0,0,0.72), 0 2px 8px rgba(0,0,0,0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.mac-shot:hover .mac-frame {
+  transform: translateY(-5px);
+  box-shadow: 0 36px 86px -24px rgba(0,0,0,0.78), 0 2px 10px rgba(0,0,0,0.45);
+}
+.mac-shot img { display: block; width: 100%; height: auto; }
+.mac-shot figcaption {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.72;
+}
+@media (min-width: 1240px) {
+  .mac-shots { justify-content: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mac-shot .mac-frame { transition: none; }
+  .mac-shot:hover .mac-frame { transform: none; }
+}

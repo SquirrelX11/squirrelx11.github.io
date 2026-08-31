@@ -76,7 +76,11 @@ export function ChippySoundTest() {
   const [release, setRelease] = useState(true);
   const [bellOn, setBellOn] = useState(true);
   const [lit, setLit] = useState(false);
+  const [typed, setTyped] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const pad = useRef<HTMLTextAreaElement | null>(null);
 
+  const currentRef = useRef<Pack | null>(null);
   const audio = useRef<AudioContext | null>(null);
   const master = useRef<GainNode | null>(null);
   const loaded = useRef<Loaded | null>(null);
@@ -84,8 +88,10 @@ export function ChippySoundTest() {
   const sinceReturn = useRef(0);
   const nextBell = useRef(0);
   const settings = useRef({ release: true, bell: true });
+  const typedRef = useRef(false);
 
   settings.current = { release, bell: bellOn };
+  typedRef.current = typed;
 
   const context = useCallback(() => {
     if (!audio.current) {
@@ -119,6 +125,7 @@ export function ChippySoundTest() {
 
   const select = useCallback(async (pack: Pack) => {
     setCurrent(pack);
+    currentRef.current = pack;
     busy.current = true;
     setStatus(`Loading ${pack.name}…`);
 
@@ -139,7 +146,8 @@ export function ChippySoundTest() {
       loaded.current = { voices, bell: pack.bell ? await grab(pack.bell.file) : null };
       sinceReturn.current = 0;
       nextBell.current = pack.bell ? pack.bell.margin + Math.floor(Math.random() * 9) - 4 : 0;
-      setStatus(`${pack.name} — ${pack.subtitle}`);
+      setStatus(typedRef.current ? `${pack.name} — ${pack.subtitle}` : "Ready — start typing");
+      pad.current?.focus();
     } catch {
       setStatus("That profile could not be loaded.");
     } finally {
@@ -186,6 +194,10 @@ export function ChippySoundTest() {
       if (event.metaKey || event.ctrlKey || event.repeat) return;
       context();
       strike(event.code, "down");
+      if (!typedRef.current) {
+        setTyped(true);
+        setStatus(currentRef.current ? `${currentRef.current.name} — ${currentRef.current.subtitle}` : "");
+      }
       setLit(true);
       window.setTimeout(() => setLit(false), 90);
     };
@@ -245,24 +257,87 @@ export function ChippySoundTest() {
 
   return (
     <div className="glass" style={{ padding: 24, borderRadius: 22 }}>
-      <textarea
-        placeholder="Start typing here…"
-        spellCheck={false}
-        aria-label="Type to hear the selected profile"
+      <div
+        role="presentation"
+        onClick={() => pad.current?.focus()}
         style={{
-          width: "100%",
-          minHeight: 116,
-          resize: "none",
-          border: 0,
-          outline: 0,
-          background: "transparent",
-          color: "inherit",
-          font: "inherit",
-          fontSize: 19,
-          lineHeight: 1.55
+          position: "relative",
+          cursor: "text",
+          borderRadius: 16,
+          padding: "18px 18px 14px",
+          background: "rgba(255,255,255,.04)",
+          border: `1px solid ${focused ? (current?.accent ?? "#c4763a") : "rgba(255,255,255,.16)"}`,
+          transition: "border-color .2s"
         }}
-      />
-      <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 13, opacity: 0.7, marginTop: 6 }}>
+      >
+        <textarea
+          ref={pad}
+          spellCheck={false}
+          aria-label="Type here to hear the selected profile"
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          style={{
+            width: "100%",
+            minHeight: 104,
+            resize: "none",
+            border: 0,
+            outline: 0,
+            background: "transparent",
+            color: "inherit",
+            font: "inherit",
+            fontSize: 19,
+            lineHeight: 1.55
+          }}
+        />
+
+        {!typed && (
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: "18px 18px auto",
+              pointerEvents: "none",
+              fontSize: 19,
+              lineHeight: 1.55,
+              opacity: 0.55
+            }}
+          >
+            Type anything — the whole page listens
+            <span
+              style={{
+                display: "inline-block",
+                width: 2,
+                height: "1.05em",
+                marginLeft: 3,
+                verticalAlign: "-0.16em",
+                background: "currentColor",
+                animation: "chippy-caret 1.05s steps(1) infinite"
+              }}
+            />
+          </div>
+        )}
+      </div>
+
+      <style>{"@keyframes chippy-caret { 50% { opacity: 0 } }"}</style>
+
+      <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 13, marginTop: 12, flexWrap: "wrap" }}>
+        <button
+          type="button"
+          onClick={() => pad.current?.focus()}
+          style={{
+            cursor: "pointer",
+            font: "inherit",
+            fontSize: 13,
+            fontWeight: 600,
+            color: "#fff",
+            border: 0,
+            borderRadius: 10,
+            padding: "9px 16px",
+            background: current?.accent ?? "#c4763a"
+          }}
+        >
+          Click here, then type
+        </button>
         <span
           style={{
             width: 8, height: 8, borderRadius: "50%",
@@ -271,7 +346,7 @@ export function ChippySoundTest() {
             transition: "opacity .09s"
           }}
         />
-        <span>{status}</span>
+        <span style={{ opacity: 0.7 }}>{status}</span>
       </div>
 
       {shelf("switch", "Mechanical switches")}

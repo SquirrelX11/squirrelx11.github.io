@@ -29,6 +29,19 @@ export interface AppDefinition {
 
 export const apps: AppDefinition[] = [
   {
+    slug: "chippy",
+    name: "Chippy",
+    tagline: "Every Mac keyboard, with the sound of a mechanical one.",
+    subtitle: "Mechanical & typewriter sounds",
+    description: "Eleven switch and typewriter profiles for your keyboard, built key by key. Try them in the browser first.",
+    platforms: ["Mac"],
+    icon: "/apps/chippy/icon.png",
+    heroImage: "/apps/chippy/icon.png",
+    status: "coming-soon",
+    featured: false,
+    href: "/apps/chippy"
+  },
+  {
     slug: "b-day",
     name: "B-DAY",
     tagline: "Never miss a birthday that matters.",

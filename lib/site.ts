@@ -76,5 +76,9 @@ export const routes = {
   verdenPrivacy: "/apps/verden/privacy",
   verdenSecurity: "/apps/verden/security",
   verdenTerms: "/apps/verden/terms",
-  verdenSupport: "/apps/verden/support"
+  verdenSupport: "/apps/verden/support",
+  // App-specific (Chippy) routes — the App Store listing links to these.
+  chippy: "/apps/chippy",
+  chippyPrivacy: "/apps/chippy/privacy",
+  chippySupport: "/apps/chippy/support"
 } as const;

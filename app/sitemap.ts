@@ -28,7 +28,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/apps/verden/support"
   ];
 
-  return [...staticRoutes, ...appRoutes, ...soonRoutes, ...nestiRoutes, ...verdenRoutes].map((path) => ({
+  // Chippy legal sub-pages (indexable). The App Store listing links to these.
+  const chippyRoutes = ["/apps/chippy/privacy", "/apps/chippy/support"];
+
+  return [...staticRoutes, ...appRoutes, ...soonRoutes, ...nestiRoutes, ...verdenRoutes, ...chippyRoutes].map((path) => ({
     url: `${base}${path}`,
     changeFrequency: "monthly",
     priority: path === "/" ? 1 : 0.6

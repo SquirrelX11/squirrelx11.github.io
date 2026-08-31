@@ -282,6 +282,10 @@ export function ChippySoundTest() {
             resize: "none",
             border: 0,
             outline: 0,
+            // The site's global :focus-visible rule paints a ring on everything.
+            // Here the wrapper already lights up in the profile's colour, so a
+            // second frame inside the first is just noise.
+            boxShadow: "none",
             background: "transparent",
             color: "inherit",
             font: "inherit",

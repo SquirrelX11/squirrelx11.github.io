@@ -153,8 +153,9 @@ export default function ChippyPage() {
         </ul>
         <p className="lead" style={{ marginTop: 16 }}>
           Because it listens for key presses, macOS asks you to allow Chippy in
-          Privacy &amp; Security → Accessibility. Every profile can be auditioned
-          inside the app before you grant anything.
+          Privacy &amp; Security → Input Monitoring — the permission meant for
+          exactly that, watching input without acting on it. Every profile can be
+          auditioned inside the app before you grant anything.
         </p>
       </section>
 

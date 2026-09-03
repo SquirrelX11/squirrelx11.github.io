@@ -9,7 +9,7 @@
 
 export const chippyLegalMeta = {
   effectiveDate: "August 31, 2026",
-  lastUpdated: "August 31, 2026"
+  lastUpdated: "September 3, 2026"
 } as const;
 
 export const chippyPrivacyBody = `Chippy **collects nothing**. There is no account, no analytics, no advertising, no tracker and no third-party SDK in the app, and there is **no server on our side** — nowhere for anything to be sent. This Privacy Policy is provided by Aleksandr Pavlov (Squirrel Apps), an independent developer.
@@ -18,7 +18,7 @@ export const chippyPrivacyBody = `Chippy **collects nothing**. There is no accou
 This policy covers the Chippy app for macOS.
 
 ## 2. What Chippy reads while you type
-Chippy plays a sound for each key press. To know that a key moved it observes keyboard events through a **listen-only** system facility, which macOS gates behind the **Accessibility** permission you grant in System Settings.
+Chippy plays a sound for each key press. To know that a key moved it observes keyboard events through a **listen-only** system facility, which macOS gates behind the **Input Monitoring** permission you grant in System Settings. That permission covers exactly this: watching input without acting on it.
 
 From each event it reads exactly two things: the **numeric code** of the key, and whether it went **down or up**.
 
@@ -49,7 +49,7 @@ Questions about privacy: [PRIVACY EMAIL]`;
 export const chippySupportBody = `Chippy gives your Mac keyboard the sound of a mechanical one. Write to [SUPPORT EMAIL] and a person will answer.
 
 ## I hear nothing when I type
-Chippy needs permission to notice key presses. Open **System Settings → Privacy & Security → Accessibility** and switch Chippy on. If it is already listed, switch it off and on again — macOS sometimes holds on to a stale entry after an update.
+Chippy needs permission to notice key presses. Open **System Settings → Privacy & Security → Input Monitoring** and switch Chippy on. If it is already listed, switch it off and on again — macOS sometimes holds on to a stale entry after an update.
 
 Sound inside the app's own window but nowhere else means exactly this: the permission has not been granted yet.
 

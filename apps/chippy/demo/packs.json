@@ -1,0 +1,619 @@
+[
+ {
+  "id": "cashew",
+  "name": "Cashew",
+  "subtitle": "Creamy POM linear \u00b7 smooth and round",
+  "accent": "#F2C078",
+  "family": "switch",
+  "order": 0,
+  "voices": {
+   "default": {
+    "down": [
+     "default_down_1.wav",
+     "default_down_2.wav",
+     "default_down_3.wav"
+    ],
+    "up": [
+     "default_up_1.wav",
+     "default_up_2.wav"
+    ]
+   },
+   "modifier": {
+    "down": [
+     "modifier_down_1.wav",
+     "modifier_down_2.wav",
+     "modifier_down_3.wav"
+    ],
+    "up": [
+     "modifier_up_1.wav",
+     "modifier_up_2.wav"
+    ]
+   },
+   "enter": {
+    "down": [
+     "enter_down_1.wav",
+     "enter_down_2.wav",
+     "enter_down_3.wav"
+    ],
+    "up": [
+     "enter_up_1.wav",
+     "enter_up_2.wav"
+    ]
+   },
+   "space": {
+    "down": [
+     "space_down_1.wav",
+     "space_down_2.wav",
+     "space_down_3.wav"
+    ],
+    "up": [
+     "space_up_1.wav",
+     "space_up_2.wav"
+    ]
+   }
+  },
+  "bell": null
+ },
+ {
+  "id": "chestnut",
+  "name": "Chestnut",
+  "subtitle": "Deep muted thock \u00b7 foam-filled case",
+  "accent": "#B98CFF",
+  "family": "switch",
+  "order": 1,
+  "voices": {
+   "default": {
+    "down": [
+     "default_down_1.wav",
+     "default_down_2.wav",
+     "default_down_3.wav"
+    ],
+    "up": [
+     "default_up_1.wav",
+     "default_up_2.wav"
+    ]
+   },
+   "modifier": {
+    "down": [
+     "modifier_down_1.wav",
+     "modifier_down_2.wav",
+     "modifier_down_3.wav"
+    ],
+    "up": [
+     "modifier_up_1.wav",
+     "modifier_up_2.wav"
+    ]
+   },
+   "enter": {
+    "down": [
+     "enter_down_1.wav",
+     "enter_down_2.wav",
+     "enter_down_3.wav"
+    ],
+    "up": [
+     "enter_up_1.wav",
+     "enter_up_2.wav"
+    ]
+   },
+   "space": {
+    "down": [
+     "space_down_1.wav",
+     "space_down_2.wav",
+     "space_down_3.wav"
+    ],
+    "up": [
+     "space_up_1.wav",
+     "space_up_2.wav"
+    ]
+   }
+  },
+  "bell": null
+ },
+ {
+  "id": "almond",
+  "name": "Almond",
+  "subtitle": "Crisp tactile \u00b7 sharp bump, tight tail",
+  "accent": "#5AC8FA",
+  "family": "switch",
+  "order": 2,
+  "voices": {
+   "default": {
+    "down": [
+     "default_down_1.wav",
+     "default_down_2.wav",
+     "default_down_3.wav"
+    ],
+    "up": [
+     "default_up_1.wav",
+     "default_up_2.wav"
+    ]
+   },
+   "modifier": {
+    "down": [
+     "modifier_down_1.wav",
+     "modifier_down_2.wav",
+     "modifier_down_3.wav"
+    ],
+    "up": [
+     "modifier_up_1.wav",
+     "modifier_up_2.wav"
+    ]
+   },
+   "enter": {
+    "down": [
+     "enter_down_1.wav",
+     "enter_down_2.wav",
+     "enter_down_3.wav"
+    ],
+    "up": [
+     "enter_up_1.wav",
+     "enter_up_2.wav"
+    ]
+   },
+   "space": {
+    "down": [
+     "space_down_1.wav",
+     "space_down_2.wav",
+     "space_down_3.wav"
+    ],
+    "up": [
+     "space_up_1.wav",
+     "space_up_2.wav"
+    ]
+   }
+  },
+  "bell": null
+ },
+ {
+  "id": "pistachio",
+  "name": "Pistachio",
+  "subtitle": "Poppy tactile \u00b7 rounded pop on every stroke",
+  "accent": "#FF7A9C",
+  "family": "switch",
+  "order": 3,
+  "voices": {
+   "default": {
+    "down": [
+     "default_down_1.wav",
+     "default_down_2.wav",
+     "default_down_3.wav"
+    ],
+    "up": [
+     "default_up_1.wav",
+     "default_up_2.wav"
+    ]
+   },
+   "modifier": {
+    "down": [
+     "modifier_down_1.wav",
+     "modifier_down_2.wav",
+     "modifier_down_3.wav"
+    ],
+    "up": [
+     "modifier_up_1.wav",
+     "modifier_up_2.wav"
+    ]
+   },
+   "enter": {
+    "down": [
+     "enter_down_1.wav",
+     "enter_down_2.wav",
+     "enter_down_3.wav"
+    ],
+    "up": [
+     "enter_up_1.wav",
+     "enter_up_2.wav"
+    ]
+   },
+   "space": {
+    "down": [
+     "space_down_1.wav",
+     "space_down_2.wav",
+     "space_down_3.wav"
+    ],
+    "up": [
+     "space_up_1.wav",
+     "space_up_2.wav"
+    ]
+   }
+  },
+  "bell": null
+ },
+ {
+  "id": "hazel",
+  "name": "Hazel",
+  "subtitle": "Clicky jacket \u00b7 unmistakably loud",
+  "accent": "#7B8CFF",
+  "family": "switch",
+  "order": 4,
+  "voices": {
+   "default": {
+    "down": [
+     "default_down_1.wav",
+     "default_down_2.wav",
+     "default_down_3.wav"
+    ],
+    "up": [
+     "default_up_1.wav",
+     "default_up_2.wav"
+    ]
+   },
+   "modifier": {
+    "down": [
+     "modifier_down_1.wav",
+     "modifier_down_2.wav",
+     "modifier_down_3.wav"
+    ],
+    "up": [
+     "modifier_up_1.wav",
+     "modifier_up_2.wav"
+    ]
+   },
+   "enter": {
+    "down": [
+     "enter_down_1.wav",
+     "enter_down_2.wav",
+     "enter_down_3.wav"
+    ],
+    "up": [
+     "enter_up_1.wav",
+     "enter_up_2.wav"
+    ]
+   },
+   "space": {
+    "down": [
+     "space_down_1.wav",
+     "space_down_2.wav",
+     "space_down_3.wav"
+    ],
+    "up": [
+     "space_up_1.wav",
+     "space_up_2.wav"
+    ]
+   }
+  },
+  "bell": null
+ },
+ {
+  "id": "sesame",
+  "name": "Sesame",
+  "subtitle": "Barely there \u00b7 for shared rooms and late nights",
+  "accent": "#8FE3C8",
+  "family": "switch",
+  "order": 5,
+  "voices": {
+   "default": {
+    "down": [
+     "default_down_1.wav",
+     "default_down_2.wav",
+     "default_down_3.wav"
+    ],
+    "up": [
+     "default_up_1.wav",
+     "default_up_2.wav"
+    ]
+   },
+   "modifier": {
+    "down": [
+     "modifier_down_1.wav",
+     "modifier_down_2.wav",
+     "modifier_down_3.wav"
+    ],
+    "up": [
+     "modifier_up_1.wav",
+     "modifier_up_2.wav"
+    ]
+   },
+   "enter": {
+    "down": [
+     "enter_down_1.wav",
+     "enter_down_2.wav",
+     "enter_down_3.wav"
+    ],
+    "up": [
+     "enter_up_1.wav",
+     "enter_up_2.wav"
+    ]
+   },
+   "space": {
+    "down": [
+     "space_down_1.wav",
+     "space_down_2.wav",
+     "space_down_3.wav"
+    ],
+    "up": [
+     "space_up_1.wav",
+     "space_up_2.wav"
+    ]
+   }
+  },
+  "bell": null
+ },
+ {
+  "id": "walnut",
+  "name": "Walnut",
+  "subtitle": "Heavy desk machine \u00b7 steel typebars, loud room",
+  "accent": "#C08A52",
+  "family": "typewriter",
+  "order": 6,
+  "voices": {
+   "default": {
+    "down": [
+     "default_down_1.wav",
+     "default_down_2.wav",
+     "default_down_3.wav"
+    ],
+    "up": [
+     "default_up_1.wav",
+     "default_up_2.wav"
+    ]
+   },
+   "modifier": {
+    "down": [
+     "modifier_down_1.wav",
+     "modifier_down_2.wav",
+     "modifier_down_3.wav"
+    ],
+    "up": [
+     "modifier_up_1.wav",
+     "modifier_up_2.wav"
+    ]
+   },
+   "enter": {
+    "down": [
+     "enter_down_1.wav",
+     "enter_down_2.wav",
+     "enter_down_3.wav"
+    ],
+    "up": [
+     "enter_up_1.wav",
+     "enter_up_2.wav"
+    ]
+   },
+   "space": {
+    "down": [
+     "space_down_1.wav",
+     "space_down_2.wav",
+     "space_down_3.wav"
+    ],
+    "up": [
+     "space_up_1.wav",
+     "space_up_2.wav"
+    ]
+   }
+  },
+  "bell": {
+   "file": "bell_1.wav",
+   "margin": 62
+  }
+ },
+ {
+  "id": "pecan",
+  "name": "Pecan",
+  "subtitle": "Portable \u00b7 lighter, brighter, quick to answer",
+  "accent": "#E08A6A",
+  "family": "typewriter",
+  "order": 7,
+  "voices": {
+   "default": {
+    "down": [
+     "default_down_1.wav",
+     "default_down_2.wav",
+     "default_down_3.wav"
+    ],
+    "up": [
+     "default_up_1.wav",
+     "default_up_2.wav"
+    ]
+   },
+   "modifier": {
+    "down": [
+     "modifier_down_1.wav",
+     "modifier_down_2.wav",
+     "modifier_down_3.wav"
+    ],
+    "up": [
+     "modifier_up_1.wav",
+     "modifier_up_2.wav"
+    ]
+   },
+   "enter": {
+    "down": [
+     "enter_down_1.wav",
+     "enter_down_2.wav",
+     "enter_down_3.wav"
+    ],
+    "up": [
+     "enter_up_1.wav",
+     "enter_up_2.wav"
+    ]
+   },
+   "space": {
+    "down": [
+     "space_down_1.wav",
+     "space_down_2.wav",
+     "space_down_3.wav"
+    ],
+    "up": [
+     "space_up_1.wav",
+     "space_up_2.wav"
+    ]
+   }
+  },
+  "bell": {
+   "file": "bell_1.wav",
+   "margin": 66
+  }
+ },
+ {
+  "id": "macadamia",
+  "name": "Macadamia",
+  "subtitle": "Electric \u00b7 dense thump, a motor underneath",
+  "accent": "#9AA6B4",
+  "family": "typewriter",
+  "order": 8,
+  "voices": {
+   "default": {
+    "down": [
+     "default_down_1.wav",
+     "default_down_2.wav",
+     "default_down_3.wav"
+    ],
+    "up": [
+     "default_up_1.wav",
+     "default_up_2.wav"
+    ]
+   },
+   "modifier": {
+    "down": [
+     "modifier_down_1.wav",
+     "modifier_down_2.wav",
+     "modifier_down_3.wav"
+    ],
+    "up": [
+     "modifier_up_1.wav",
+     "modifier_up_2.wav"
+    ]
+   },
+   "enter": {
+    "down": [
+     "enter_down_1.wav",
+     "enter_down_2.wav",
+     "enter_down_3.wav"
+    ],
+    "up": [
+     "enter_up_1.wav",
+     "enter_up_2.wav"
+    ]
+   },
+   "space": {
+    "down": [
+     "space_down_1.wav",
+     "space_down_2.wav",
+     "space_down_3.wav"
+    ],
+    "up": [
+     "space_up_1.wav",
+     "space_up_2.wav"
+    ]
+   }
+  },
+  "bell": {
+   "file": "bell_1.wav",
+   "margin": 70
+  }
+ },
+ {
+  "id": "acorn",
+  "name": "Acorn",
+  "subtitle": "Felted and soft \u00b7 a typewriter for a shared office",
+  "accent": "#B7A184",
+  "family": "typewriter",
+  "order": 9,
+  "voices": {
+   "default": {
+    "down": [
+     "default_down_1.wav",
+     "default_down_2.wav",
+     "default_down_3.wav"
+    ],
+    "up": [
+     "default_up_1.wav",
+     "default_up_2.wav"
+    ]
+   },
+   "modifier": {
+    "down": [
+     "modifier_down_1.wav",
+     "modifier_down_2.wav",
+     "modifier_down_3.wav"
+    ],
+    "up": [
+     "modifier_up_1.wav",
+     "modifier_up_2.wav"
+    ]
+   },
+   "enter": {
+    "down": [
+     "enter_down_1.wav",
+     "enter_down_2.wav",
+     "enter_down_3.wav"
+    ],
+    "up": [
+     "enter_up_1.wav",
+     "enter_up_2.wav"
+    ]
+   },
+   "space": {
+    "down": [
+     "space_down_1.wav",
+     "space_down_2.wav",
+     "space_down_3.wav"
+    ],
+    "up": [
+     "space_up_1.wav",
+     "space_up_2.wav"
+    ]
+   }
+  },
+  "bell": {
+   "file": "bell_1.wav",
+   "margin": 64
+  }
+ },
+ {
+  "id": "hickory",
+  "name": "Hickory",
+  "subtitle": "Cut from a real machine \u00b7 the room it was recorded in",
+  "accent": "#A98F6F",
+  "family": "typewriter",
+  "order": 10,
+  "voices": {
+   "default": {
+    "down": [
+     "default_down_1.wav",
+     "default_down_2.wav",
+     "default_down_3.wav"
+    ],
+    "up": [
+     "default_up_1.wav",
+     "default_up_2.wav"
+    ]
+   },
+   "modifier": {
+    "down": [
+     "modifier_down_1.wav",
+     "modifier_down_2.wav",
+     "modifier_down_3.wav"
+    ],
+    "up": [
+     "modifier_up_1.wav",
+     "modifier_up_2.wav"
+    ]
+   },
+   "enter": {
+    "down": [
+     "enter_down_1.wav",
+     "enter_down_2.wav",
+     "enter_down_3.wav"
+    ],
+    "up": [
+     "enter_up_1.wav",
+     "enter_up_2.wav"
+    ]
+   },
+   "space": {
+    "down": [
+     "space_down_1.wav",
+     "space_down_2.wav",
+     "space_down_3.wav"
+    ],
+    "up": [
+     "space_up_1.wav",
+     "space_up_2.wav"
+    ]
+   }
+  },
+  "bell": null
+ }
+]

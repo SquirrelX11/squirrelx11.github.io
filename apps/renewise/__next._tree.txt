@@ -1,0 +1,5 @@
+:HL["/_next/static/chunks/172mmdl0fqq9j.css","style"]
+:HL["/brand/squirrel-logo.webp","image"]
+:HL["/apps/renewise/icon.png","image"]
+:HL["/apps/renewise/appstore-badge.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"apps","param":null,"prefetchHints":0,"slots":{"children":{"name":"renewise","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"aqE6RVnpXhA3O3Na21Dap"}
